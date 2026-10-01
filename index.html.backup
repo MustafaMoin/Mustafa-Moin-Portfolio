@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mustafa Moin | Full Stack Developer, Digital Products and AI</title>
+<meta name="description" content="Portfolio of Mustafa Moin: six deployed digital products spanning AI tools, multilingual interfaces and privacy-by-design data protection.">
+<meta property="og:title" content="Mustafa Moin | Digital Products and AI-Enabled Solutions">
+<meta property="og:description" content="Inclusive, responsible digital products from requirements to deployment.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F9FC;--fg:#061631;--mut:#4d5d78;--panel:#fff;--line:#d5deec;--pri:#0a78b8;--onpri:#fff;--amb:#b07600;--glass:rgba(246,249,252,.8);--tint:#e8f1fa}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#061631;--fg:#e9f1fd;--mut:#9db0cf;--panel:#0b2147;--line:#1c3563;--pri:#3cbcf2;--onpri:#04142e;--amb:#F5B841;--glass:rgba(6,22,49,.78);--tint:#0a1d40}}
+:root[data-theme="dark"]{--bg:#061631;--fg:#e9f1fd;--mut:#9db0cf;--panel:#0b2147;--line:#1c3563;--pri:#3cbcf2;--onpri:#04142e;--amb:#F5B841;--glass:rgba(6,22,49,.78);--tint:#0a1d40}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--fg);font:16px/1.65 'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:Fraunces,Georgia,'Times New Roman',serif;line-height:1.12;font-weight:700;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--pri);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+section{padding:96px 0}
+h2{font-size:clamp(28px,4vw,42px);margin-bottom:14px;max-width:18ch}
+.lead{color:var(--mut);max-width:60ch;margin-bottom:36px}
+nav{position:fixed;inset:0 0 auto 0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--glass);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+nav b{font-family:Fraunces,Georgia,serif;font-size:19px}
+nav .l a{font-size:14px;margin-left:20px;text-decoration:none;color:var(--mut)}
+nav .l a.on{color:var(--pri);font-weight:600}
+#pg{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--pri),var(--amb))}
+#th{background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer;margin-left:20px}
+@media(max-width:820px){nav .l a{display:none}}
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%}
+#hero .wrap{position:relative;z-index:2}
+.badge{display:inline-block;border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:6px 16px;font-size:14px;color:var(--mut);margin-bottom:26px}
+h1{font-size:clamp(38px,7.2vw,86px);max-width:15ch;margin-bottom:22px}
+#ty{font-size:clamp(17px,2.2vw,24px);color:var(--pri);min-height:1.6em;font-weight:500}
+#ty::after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--pri);margin-left:4px;vertical-align:-3px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.sub{max-width:56ch;color:var(--mut);margin:18px 0 32px}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;background:var(--pri);color:var(--onpri);font-weight:600;text-decoration:none;border:1px solid var(--pri);margin:0 10px 10px 0;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,158,219,.3)}
+.btn.g{background:transparent;color:var(--fg);border-color:var(--line)}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);border-block:1px solid var(--line);background:var(--tint)}
+.stats div{padding:26px 14px;text-align:center;border-right:1px solid var(--line)}
+.stats div:last-child{border:0}
+.stats strong{display:block;font:700 clamp(28px,3.4vw,42px)/1 Fraunces,Georgia,serif;color:var(--amb)}
+.stats span{font-size:13px;color:var(--mut)}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}.stats div{border-bottom:1px solid var(--line)}}
+.map{overflow-x:auto;border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 50% 50%,var(--tint),transparent 70%)}
+.map svg{display:block;width:100%;min-width:720px;height:auto}
+.map .n{cursor:pointer;transition:opacity .25s}
+.map .n circle{transition:transform .25s;transform-box:fill-box;transform-origin:center}
+.map .n:hover circle,.map .n:focus circle{transform:scale(1.18)}
+.map .ln{stroke:var(--pri);stroke-opacity:.28;stroke-width:1.4;transition:.25s}
+.map.dim .n,.map.dim .ln{opacity:.14}.map.dim .n.on,.map.dim .ln.on{opacity:1}
+.map .ln.on{stroke-opacity:1;stroke-width:2.4}
+.map text{fill:var(--fg);font:500 15px 'Public Sans',sans-serif;text-anchor:middle;pointer-events:none}
+.map .hint{font-size:13px;fill:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span,.f button{border:1px solid var(--line);border-radius:8px;padding:3px 11px;font-size:13px;color:var(--mut);background:none;font-family:inherit}
+.f{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px}
+.f button{cursor:pointer;padding:7px 16px;border-radius:999px;font-size:14px;color:var(--fg)}
+.f button.on{background:var(--pri);color:var(--onpri);border-color:var(--pri)}
+.case{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;padding:56px 0;border-top:1px solid var(--line)}
+.case:nth-child(even) .media{order:2}
+.case.hide{display:none}
+.frame{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 24px 60px -24px rgba(0,20,60,.45);transition:transform .15s;will-change:transform}
+.bar{display:flex;gap:6px;padding:9px 12px;background:var(--tint);border-bottom:1px solid var(--line)}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.frame img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top}
+.phone{max-width:250px;margin:0 auto;border-radius:34px;border:7px solid var(--fg)}
+.phone img{aspect-ratio:9/17.5}
+.cap{font-size:13px;color:var(--mut);margin-top:12px;text-align:center}
+.body h3{font-size:clamp(26px,3vw,36px);margin-bottom:8px}
+.kind{color:var(--pri);font-weight:600;font-size:15px;margin-bottom:10px}
+.body p{color:var(--mut);margin-bottom:14px}
+.body ul{margin:0 0 18px 18px;color:var(--mut)}
+.body li{margin-bottom:6px}
+.body .chips{margin-bottom:20px}
+@media(max-width:900px){.case{grid-template-columns:1fr;gap:26px}.case:nth-child(even) .media{order:0}}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;counter-reset:s}
+.flow::before{content:"";position:absolute;top:22px;left:4%;height:2px;width:0;background:linear-gradient(90deg,var(--pri),var(--amb));transition:width 2.2s ease}
+.flow.in::before{width:92%}
+.st{padding:0 10px;text-align:left;position:relative}
+.st::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--bg);border:2px solid var(--pri);font-weight:600;margin-bottom:14px;position:relative}
+.st h3{font-size:18px;margin-bottom:6px}.st p{font-size:14px;color:var(--mut)}
+@media(max-width:900px){.flow{grid-template-columns:1fr 1fr;gap:28px}.flow::before{display:none}}
+.sk{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.sk div{padding:24px 24px 24px 0;border-bottom:1px solid var(--line)}
+.sk h3{font-size:18px;margin-bottom:12px}
+@media(max-width:820px){.sk{grid-template-columns:1fr}}
+.tl{border-left:2px solid var(--pri);padding-left:26px;margin-left:6px}
+.tl div{margin-bottom:30px}.tl b{font-family:Fraunces,Georgia,serif;font-size:20px}.tl small{display:block;color:var(--amb);font-weight:600}.tl p{color:var(--mut);max-width:60ch}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.how h3{font-size:19px;margin-bottom:8px}.how p{color:var(--mut);font-size:15px}
+@media(max-width:900px){.how{grid-template-columns:1fr 1fr}}@media(max-width:560px){.how{grid-template-columns:1fr}}
+.cvb{display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:space-between;background:var(--tint);border:1px solid var(--line);border-radius:28px;padding:40px}
+.cvb p{color:var(--mut);max-width:52ch}
+.ct a{display:block;font:700 clamp(22px,3.6vw,40px)/1.4 Fraunces,Georgia,serif;text-decoration:none;width:fit-content;border-bottom:2px solid transparent}
+.ct a:hover{border-color:var(--pri);color:var(--pri)}
+footer{padding:36px 0;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+#glow{position:fixed;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(0,158,219,.13),transparent 65%);left:-999px;top:0}
+@media(hover:none){#glow{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+<nav aria-label="Main"><div class="wrap"><b>Mustafa Moin</b><div class="l"><a href="#work">Projects</a><a href="#map">Map</a><a href="#privacy">Privacy by design</a><a href="#skills">Skills</a><a href="#cv">CV</a><a href="#contact">Contact</a><button id="th" aria-label="Toggle light and dark theme">Theme</button></div></div><div id="pg"></div></nav>
+
+<header id="hero"><canvas id="net" aria-hidden="true"></canvas>
+<div class="wrap">
+<span class="badge">Open to internships in digital product design, build and management</span>
+<h1>I build inclusive, responsible digital products.</h1>
+<div id="ty" aria-live="off"></div>
+<p class="sub">Final-year Computer Science student and full stack developer from Karachi, Pakistan. Six platforms designed, built and deployed, from product requirements to launch.</p>
+<a class="btn" href="#work">View projects</a><a class="btn g" href="Mustafa_Moin_CV.pdf" download>Download CV</a><a class="btn g" href="#contact">Contact</a>
+</div></header>
+
+<div class="stats" id="stats"></div>
+
+<section id="map"><div class="wrap">
+<h2>How the work connects</h2>
+<p class="lead">Each project is a node. Hover or tap one to see which themes it carries, then click to open its case study.</p>
+<div class="map" id="mapbox"></div>
+</div></section>
+
+<section id="work" style="padding-top:20px"><div class="wrap">
+<h2>Six products, built end to end</h2>
+<p class="lead">Every project below is deployed or delivered. Filter by the kind of work you care about.</p>
+<div class="f" id="filters" role="group" aria-label="Filter projects"></div>
+<div id="cases"></div>
+</div></section>
+
+<section id="privacy" style="background:var(--tint)"><div class="wrap">
+<h2>Data protection built into the product</h2>
+<p class="lead">In SisGo, a women-only ride-hailing platform, privacy is a feature with its own design, not a setting added at the end.</p>
+<div class="flow" id="flow">
+<div class="st"><h3>Consent</h3><p>Five consent types, written in English and Urdu.</p></div>
+<div class="st"><h3>Verification</h3><p>Phone OTP sign-in and an identity verification workflow.</p></div>
+<div class="st"><h3>Access control</h3><p>Row Level Security and role-based admin permissions.</p></div>
+<div class="st"><h3>Retention</h3><p>Sensitive identity documents kept for 72 hours only.</p></div>
+<div class="st"><h3>User rights</h3><p>Data export and account deletion endpoints.</p></div>
+<div class="st"><h3>Accountability</h3><p>Two-person approval for high-risk actions and a full audit trail.</p></div>
+</div></div></section>
+
+<section id="skills"><div class="wrap">
+<h2>Skills</h2><p class="lead">Grouped by the kind of problem they solve.</p>
+<div class="sk" id="sk"></div>
+</div></section>
+
+<section id="exp" style="background:var(--tint)"><div class="wrap">
+<h2>Experience and education</h2><p class="lead"></p>
+<div class="tl">
+<div><b>Freelance Web and Mobile Developer</b><small>Present, Karachi</small><p>Works with clients to define product requirements and deliver web and mobile applications from design through deployment, with technical documentation, alongside a full-time degree.</p></div>
+<div><b>B.S. Computer Science, Indus University</b><small>Final academic year, expected 2026</small><p>First university degree at bachelor's level, Karachi, Pakistan.</p></div>
+</div></div></section>
+
+<section><div class="wrap">
+<h2>How I work</h2><p class="lead">Four habits, each with evidence from the projects above.</p>
+<div class="how">
+<div><h3>Achieve results</h3><p>Six products taken to deployment, with 61 unit tests and 106 end-to-end tests on SisGo.</p></div>
+<div><h3>Think innovatively</h3><p>A 13-stage decision pipeline in TAYBEX and a LoRA fine-tuned Llama 3.2 model in TripMate AI.</p></div>
+<div><h3>Learn continuously</h3><p>Moved across React Native, FastAPI, Supabase and LLM tooling, choosing the right stack for each product.</p></div>
+<div><h3>Enable diversity and inclusion</h3><p>Six interface languages with right-to-left support, Urdu consent flows, and a platform designed for women's safety.</p></div>
+</div></div></section>
+
+<section id="cv" style="padding-top:20px"><div class="wrap"><div class="cvb">
+<div><h2 style="margin-bottom:10px">Curriculum vitae</h2><p>A two-page, plain-format CV with my education, skills, projects and experience.</p></div>
+<a class="btn" href="Mustafa_Moin_CV.pdf" download>Download CV as PDF</a>
+</div></div></section>
+
+<section id="contact"><div class="wrap ct">
+<h2>Let's build something useful</h2><p class="lead">I am happy to walk through any project or share a live demonstration.</p>
+<a href="mailto:mustafamoin061@gmail.com">mustafamoin061@gmail.com</a>
+<a href="https://linkedin.com/in/mustafamoin" target="_blank" rel="noopener">LinkedIn</a>
+<a href="https://github.com/MustafaMoin" target="_blank" rel="noopener">GitHub</a>
+</div></section>
+<footer><div class="wrap">Designed and built by Mustafa Moin, 2026.</div></footer>
+
+<script>
+/* ---- CONTENT. Add links here: live, video (YouTube unlisted), apk. Empty string = button hidden. ---- */
+const P=[
+{id:'sisgo',n:'SisGo',kind:'Android app for women\'s safe mobility',cat:'mobile data',img:'assets/sisgo.jpg',fr:'browser',cap:'Brand and landing concept',th:['inc','dp','pe'],
+ t:'A women-only ride-hailing platform for Pakistan with a mobile app, backend API and administrative panel, centred on safety, privacy and gender inclusion.',
+ pts:['162 REST API endpoints and a 30+ table PostgreSQL database with Row Level Security','Five-type consent management in English and Urdu, and a 72-hour retention policy for identity documents','Validated with 61 unit tests and 106 end-to-end tests'],
+ st:['React Native','Expo','TypeScript','FastAPI','Supabase'],live:'',video:'',apk:''},
+{id:'taybex',n:'TAYBEX',kind:'Live AI platform in six languages',cat:'ai web',img:'assets/taybex.jpg',fr:'browser',th:['ai','ml','inc','pe'],
+ t:'A live SaaS platform delivering AI-assisted, Shariah-compliant market intelligence, with tiered subscriptions and an administrative console.',
+ pts:['13-stage decision pipeline with an 8-layer ethical screening engine using LLMs to return explainable classifications','FastAPI backend with 100+ endpoints, role-based access, real-time streaming and signed payment webhooks','Interface in English, Arabic, Urdu, Chinese, Spanish and French with right-to-left support'],
+ st:['React','Vite','FastAPI','Supabase','Gemini','Groq'],live:'https://www.taybex.app/',video:'',apk:''},
+{id:'tripmate',n:'TripMate AI',kind:'Live AI travel planning platform',cat:'ai web',img:'assets/tripmate.jpg',fr:'browser',th:['ai','pe'],
+ t:'A multi-role travel platform that uses large language models to generate personalised itineraries, hotel recommendations and map links.',
+ pts:['Groq Llama 3.3 70B with Gemini fallback; Llama 3.2 3B fine-tuned with LoRA on a custom 200-example dataset','Travelers, hotels, vendors and administrators, with 8 REST API modules and Stripe payments','Administrator dashboard for approvals, revenue reporting and audit logging'],
+ st:['React','TypeScript','Node.js','MongoDB','Stripe'],live:'https://tripmate-fyp.vercel.app/',video:'',apk:''},
+{id:'phishing',n:'PhishingHunter Elite',kind:'Live URL risk scoring platform and API',cat:'ai web data',img:'assets/phishing.jpg',fr:'browser',th:['ai','dp','pe'],
+ t:'A web application and public REST API that scores any URL from 0 to 100 using 14 weighted signals blended with a Random Forest model.',
+ pts:['Integrates Google Safe Browsing, VirusTotal and WHOIS with a 31,564-entry blocklist','MongoDB caching reduces external API calls and response time','Administrator dashboard with analytics and a feedback loop to track model errors'],
+ st:['Python','Flask','scikit-learn','MongoDB','Docker'],live:'https://phishinghunter.onrender.com/',video:'',apk:''},
+{id:'regalia',n:'REGALIA',kind:'Live full stack e-commerce platform',cat:'web',img:'assets/regalia.jpg',fr:'browser',th:['pe'],
+ t:'A fashion e-commerce application with a customer storefront and a separate administrative panel.',
+ pts:['8 RESTful API modules covering products, orders, cart, wishlist, users, search and blog','JWT and bcrypt authentication with OTP-based guest verification','Transactional emails and automated order confirmations'],
+ st:['Node.js','Express.js','MongoDB','JWT'],live:'https://regalia-fashion.onrender.com/',video:'',apk:''},
+{id:'oop',n:'OOP Master',kind:'Android learning app',cat:'mobile',img:'assets/oop.jpg',fr:'phone',th:['pe'],
+ t:'A cross-platform mobile app that teaches Object-Oriented Programming in C++ with lessons, quizzes and progress tracking.',
+ pts:['8 core concepts and 120 quiz questions, with bookmarks and an in-app C++ practice compiler','Supabase Auth with email, Google sign-in and password reset','User progress and quiz results stored in PostgreSQL with Row Level Security'],
+ st:['React Native','Expo Router','TypeScript','Supabase'],live:'',video:'',apk:''}];
+const T=[['inc','Inclusion'],['dp','Data protection'],['ai','AI for development'],['ml','Multilingual access'],['pe','Product engineering']];
+const S=[[6,'Platforms delivered'],[162,'SisGo API endpoints'],[100,'TAYBEX endpoints','+'],[6,'Interface languages, with RTL'],[106,'End-to-end tests in SisGo'],[31564,'Entries in the phishing blocklist']];
+const K=[['Product and AI',['Product requirements','User flows','LLM integration','LoRA fine-tuning','scikit-learn','Technical documentation']],['Frontend',['React','React Native','Expo','TypeScript','Tailwind CSS','i18n and RTL']],['Backend and APIs',['Python','FastAPI','Flask','Node.js','Express.js','REST design','Stripe','Safepay']],['Data and databases',['PostgreSQL','Supabase','MongoDB','SQL','Data modelling','Recharts','Chart.js']],['Security and data protection',['JWT','OAuth','OTP','Row Level Security','Consent management','Audit logging']],['Tools',['Git','GitHub Actions','Docker','Vercel','Render','Netlify','Postman']]];
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const esc=t=>t.replace(/</g,'&lt;');
+
+/* stats */
+$('#stats').innerHTML=S.map(s=>`<div><strong data-to="${s[0]}" data-suf="${s[2]||''}">0</strong><span>${s[1]}</span></div>`).join('');
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,to=+el.dataset.to,sf=el.dataset.suf;if(RM){el.textContent=to.toLocaleString()+sf;return}const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1400);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString()+(p==1?sf:'');if(p<1)requestAnimationFrame(f)})(t0)}),{threshold:.6});
+$$('[data-to]').forEach(e=>cio.observe(e));
+
+/* skills */
+$('#sk').innerHTML=K.map(k=>`<div><h3>${k[0]}</h3><div class="chips">${k[1].map(x=>`<span>${x}</span>`).join('')}</div></div>`).join('');
+
+/* cases */
+$('#cases').innerHTML=P.map(p=>{const b=[p.live&&`<a class="btn" href="${p.live}" target="_blank" rel="noopener">Open live demo</a>`,p.video&&`<a class="btn g" href="${p.video}" target="_blank" rel="noopener">Watch demo video</a>`,p.apk&&`<a class="btn g" href="${p.apk}" download>Download APK</a>`].filter(Boolean).join('');
+return `<article class="case" id="p-${p.id}" data-cat="${p.cat}"><div class="media"><div class="frame ${p.fr=='phone'?'phone':''}">${p.fr=='phone'?'':'<div class="bar"><i></i><i></i><i></i></div>'}<img src="${p.img}" alt="${p.n} screenshot" loading="lazy"></div>${p.cap?`<p class="cap">${p.cap}</p>`:''}</div>
+<div class="body"><h3>${p.n}</h3><div class="kind">${p.kind}</div><p>${p.t}</p><ul>${p.pts.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="chips">${p.st.map(x=>`<span>${x}</span>`).join('')}</div>${b}</div></article>`}).join('');
+const FL=[['all','All'],['ai','AI'],['mobile','Mobile'],['web','Web'],['data','Data protection']];
+$('#filters').innerHTML=FL.map((f,i)=>`<button data-f="${f[0]}" class="${i?'':'on'}">${f[1]}</button>`).join('');
+$('#filters').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#filters button').forEach(x=>x.classList.toggle('on',x==b));$$('.case').forEach(c=>c.classList.toggle('hide',b.dataset.f!='all'&&!c.dataset.cat.split(' ').includes(b.dataset.f)))};
+$$('.frame').forEach(f=>{if(matchMedia('(hover:none)').matches||RM)return;f.onmousemove=e=>{const r=f.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;f.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg)`};f.onmouseleave=()=>f.style.transform=''});
+
+/* systems map */
+(function(){const W=900,H=560,cx=W/2,cy=H/2,pos={},ns=[];
+P.forEach((p,i)=>{const a=i*2*Math.PI/P.length-Math.PI/2;pos[p.id]=[cx+215*Math.cos(a),cy+140*Math.sin(a)]});
+T.forEach((t,i)=>{const a=i*2*Math.PI/T.length-Math.PI/2+.42;pos[t[0]]=[cx+385*Math.cos(a),cy+235*Math.sin(a)]});
+let ln='',nd='';
+P.forEach(p=>{ln+=`<line class="ln" data-a="${p.id}" x1="${cx}" y1="${cy}" x2="${pos[p.id][0]}" y2="${pos[p.id][1]}"/>`;p.th.forEach(t=>ln+=`<line class="ln" data-a="${p.id}" data-b="${t}" x1="${pos[p.id][0]}" y1="${pos[p.id][1]}" x2="${pos[t][0]}" y2="${pos[t][1]}"/>`)});
+P.forEach(p=>nd+=`<g class="n" data-k="${p.id}" tabindex="0" role="button" aria-label="${p.n}: open case study"><circle cx="${pos[p.id][0]}" cy="${pos[p.id][1]}" r="27" fill="var(--pri)"/><text x="${pos[p.id][0]}" y="${pos[p.id][1]+50}">${p.n}</text></g>`);
+T.forEach(t=>nd+=`<g class="n" data-k="${t[0]}" tabindex="0" role="button" aria-label="Theme: ${t[1]}"><circle cx="${pos[t[0]][0]}" cy="${pos[t[0]][1]}" r="17" fill="var(--panel)" stroke="var(--amb)" stroke-width="3"/><text x="${pos[t[0]][0]}" y="${pos[t[0]][1]+38}" style="fill:var(--amb)">${t[1]}</text></g>`);
+$('#mapbox').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Interactive map linking six projects to five themes">${ln}<circle cx="${cx}" cy="${cy}" r="42" fill="var(--fg)"/><text x="${cx}" y="${cy+6}" style="fill:var(--bg);font-weight:700">Mustafa</text>${nd}</svg>`;
+const box=$('#mapbox'),svg=$('svg',box);
+function hl(k){box.classList.add('dim');const rel=new Set([k]);P.forEach(p=>{if(p.id==k)p.th.forEach(t=>rel.add(t));if(p.th.includes(k))rel.add(p.id)});$$('.n',svg).forEach(n=>n.classList.toggle('on',rel.has(n.dataset.k)));$$('.ln',svg).forEach(l=>l.classList.toggle('on',(l.dataset.a==k||l.dataset.b==k)&&(l.dataset.b||l.dataset.a==k)))}
+function off(){box.classList.remove('dim');$$('.on',svg).forEach(x=>x.classList.remove('on'))}
+$$('.n',svg).forEach(n=>{const k=n.dataset.k;n.onmouseenter=n.onfocus=()=>hl(k);n.onmouseleave=n.onblur=off;n.onclick=()=>{const c=$('#p-'+k);if(c){$$('#filters button')[0].click();c.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})}};n.onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();n.onclick()}}});
+if(!RM){$$('.ln',svg).forEach(l=>{const L=l.getTotalLength?l.getTotalLength():0;if(L){l.style.strokeDasharray=L;l.style.strokeDashoffset=L}});const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();$$('.ln',svg).forEach((l,i)=>{l.style.transition=`stroke-dashoffset 1.4s ease ${i*.04}s,opacity .25s,stroke-opacity .25s`;l.style.strokeDashoffset=0})}},{threshold:.3});io.observe(box)}
+})();
+
+/* flow */
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){es[0].target.classList.add('in');o.disconnect()}},{threshold:.4}).observe($('#flow'));
+
+/* typing */
+(function(){const w=['AI-enabled tools that explain their reasoning','Multilingual platforms with right-to-left support','Privacy-by-design systems for sensitive data'],el=$('#ty');if(RM){el.textContent=w[0];return}let i=0,j=0,d=0;(function t(){const s=w[i];el.textContent=s.slice(0,j);if(!d&&j<s.length){j++;setTimeout(t,45)}else if(!d){d=1;setTimeout(t,1600)}else if(j>0){j--;setTimeout(t,22)}else{d=0;i=(i+1)%w.length;setTimeout(t,300)}})()})();
+
+/* hero network */
+(function(){const c=$('#net'),x=c.getContext('2d');let W,H,pts=[],m={x:-999,y:-999},col='#3cbcf2',fr=0;
+function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;const n=W<700?34:80;pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}
+size();addEventListener('resize',size);addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});
+function draw(){if(fr++%60==0)col=getComputedStyle(document.documentElement).getPropertyValue('--pri').trim();x.clearRect(0,0,W,H);x.fillStyle=x.strokeStyle=col;
+pts.forEach(p=>{if(!RM){p.x+=p.vx;p.y+=p.vy;const dx=m.x-p.x,dy=m.y-p.y,d=Math.hypot(dx,dy);if(d<160&&d>1){p.x+=dx/d*.6;p.y+=dy/d*.6}if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}x.globalAlpha=.7;x.beginPath();x.arc(p.x,p.y,2,0,7);x.fill()});
+for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);if(d<130){x.globalAlpha=(1-d/130)*.4;x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(pts[j].x,pts[j].y);x.stroke()}}
+if(!RM&&!document.hidden)requestAnimationFrame(draw)}
+draw();if(RM)addEventListener('resize',draw)})();
+
+/* nav, progress, glow, theme */
+const secs=$$('section[id]'),links=$$('nav .l a');
+addEventListener('scroll',()=>{const h=document.documentElement;$('#pg').style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%';let cur='';secs.forEach(s=>{if(s.getBoundingClientRect().top<160)cur=s.id});links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+cur||(cur=='exp'&&0)))},{passive:true});
+addEventListener('mousemove',e=>{const g=$('#glow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+(function(){const r=document.documentElement;try{const s=localStorage.getItem('theme');if(s)r.dataset.theme=s}catch(e){}
+$('#th').onclick=()=>{const dark=r.dataset.theme?r.dataset.theme=='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}}})();
+</script>
+</body>
+</html>
