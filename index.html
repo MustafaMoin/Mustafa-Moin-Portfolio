@@ -10,7 +10,9 @@
   <meta property="og:type" content="website">
   
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230284c7'/%3E%3Cstop offset='100%25' stop-color='%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='46' fill='url(%23g)'/%3E%3Cpath d='M30 50 L45 65 L70 35' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/jpeg" href="assets/mustafa_moin.jpg">
+  <link rel="shortcut icon" type="image/jpeg" href="assets/mustafa_moin.jpg">
+  <link rel="apple-touch-icon" href="assets/mustafa_moin.jpg">
   
   <!-- Premium Modern Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,18 +189,39 @@
       gap: 14px;
       cursor: pointer;
     }
-    .nav-logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--pri), var(--accent-green));
-      border-radius: 11px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 900;
-      font-family: var(--font-display);
-      font-size: 20px;
-      box-shadow: 0 4px 16px var(--pri-glow);
+    .nav-avatar-wrap {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+    }
+    .nav-avatar-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid rgba(56, 189, 248, 0.55);
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+      display: block;
+      transition: all 0.25s ease;
+    }
+    .nav-brand:hover .nav-avatar-img {
+      transform: scale(1.06);
+      border-color: var(--pri-light);
+      box-shadow: 0 6px 22px rgba(56, 189, 248, 0.65);
+    }
+    .nav-avatar-dot {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 11px;
+      height: 11px;
+      background: var(--accent-green);
+      border: 2px solid var(--bg);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 2s infinite;
     }
     .nav-brand-text {
       display: flex;
@@ -401,23 +424,78 @@
       font-weight: 600;
       color: var(--pri-light);
       backdrop-filter: blur(10px);
+      white-space: nowrap;
     }
     .hero-badge.highlight-badge {
       background: rgba(16, 185, 129, 0.12);
       border-color: rgba(16, 185, 129, 0.35);
       color: var(--accent-green);
     }
+    .hero-greeting {
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 600;
+      color: var(--pri-light);
+      margin-bottom: 8px;
+      font-family: var(--font-display);
+      letter-spacing: 0.02em;
+    }
     .hero-title {
-      font-size: clamp(38px, 5.2vw, 68px);
-      line-height: 1.08;
-      margin-bottom: 18px;
-      font-weight: 800;
+      font-size: clamp(42px, 6.2vw, 76px);
+      line-height: 1.04;
+      margin-bottom: 12px;
+      font-weight: 900;
       letter-spacing: -0.03em;
     }
     .hero-title span.gradient-text {
-      background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #10b981 100%);
+      background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 45%, #10b981 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+    .hero-role-headline {
+      font-size: clamp(18px, 2.4vw, 24px);
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    :root[data-theme="light"] .hero-role-headline {
+      color: #475569;
+    }
+    .hero-tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+    .hero-tech-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hero-tech-pill:hover {
+      background: rgba(2, 132, 199, 0.15);
+      border-color: var(--pri-light);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    :root[data-theme="light"] .hero-tech-pill {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+    :root[data-theme="light"] .hero-tech-pill:hover {
+      background: rgba(2, 132, 199, 0.1);
+      border-color: var(--pri);
+      color: var(--pri);
     }
     .typewriter-box {
       font-family: var(--font-mono);
@@ -903,14 +981,24 @@
       background: #000;
     }
     .mockup-frame.phone-frame {
-      max-width: 290px;
+      max-width: 240px;
+      width: 240px;
+      height: 460px;
+      max-height: 460px;
       margin: 0 auto;
       border-radius: 36px;
-      border: 8px solid #1e293b;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+      border: 7px solid #1e293b;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      background: #000;
     }
     .mockup-frame.phone-frame img {
-      aspect-ratio: 9/18;
+      width: 100%;
+      height: 100%;
+      max-height: 460px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 28px;
     }
     .media-caption {
       font-size: 13px;
@@ -1135,23 +1223,77 @@
     /* ==========================================================================
        INTERACTIVE SYSTEMS CONNECTION MAP
        ========================================================================== */
+    .map-subsystem-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 24px 0 20px;
+    }
+    .map-subsystem-pill {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+    .map-subsystem-pill:hover {
+      color: #fff;
+      border-color: var(--pri-light);
+      background: rgba(2, 132, 199, 0.15);
+      transform: translateY(-1px);
+    }
+    .map-subsystem-pill.active {
+      color: #fff;
+      background: linear-gradient(135deg, var(--pri), #0ea5e9);
+      border-color: #38bdf8;
+      box-shadow: 0 4px 18px var(--pri-glow);
+    }
+    :root[data-theme="light"] .map-subsystem-pill {
+      background: #f1f5f9;
+      border-color: rgba(15, 23, 42, 0.12);
+      color: #475569;
+    }
+    :root[data-theme="light"] .map-subsystem-pill.active {
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      color: #fff;
+    }
     .systems-map-box {
-      border: 1px solid var(--line);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at 50% 50%, var(--tint), transparent 75%);
+      background: radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.15) 0%, rgba(15, 23, 42, 0.85) 75%),
+                  radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
       overflow-x: auto;
-      padding: 24px;
-      margin-top: 30px;
+      overflow-y: hidden;
+      padding: 24px 20px 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(2, 132, 199, 0.1);
+    }
+    :root[data-theme="light"] .systems-map-box {
+      background: radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.08) 0%, rgba(248, 250, 252, 0.95) 75%),
+                  radial-gradient(rgba(2, 132, 199, 0.1) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+      border-color: rgba(2, 132, 199, 0.25);
     }
     .systems-map-box svg {
       display: block;
       width: 100%;
-      min-width: 800px;
+      min-width: 820px;
       height: auto;
     }
     .map-node {
       cursor: pointer;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
     .map-node circle {
       transition: all 0.25s ease;
@@ -1159,17 +1301,17 @@
       transform-origin: center;
     }
     .map-node:hover circle, .map-node.active circle {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 10px var(--pri-light));
+      transform: scale(1.18);
+      filter: drop-shadow(0 0 14px var(--pri-light));
     }
     .map-link {
       stroke: var(--pri);
       stroke-opacity: 0.25;
-      stroke-width: 1.5;
+      stroke-width: 1.6;
       transition: all 0.25s ease;
     }
     .systems-map-box.is-dimmed .map-node, .systems-map-box.is-dimmed .map-link {
-      opacity: 0.14;
+      opacity: 0.12;
     }
     .systems-map-box.is-dimmed .map-node.is-active, .systems-map-box.is-dimmed .map-link.is-active {
       opacity: 1;
@@ -1177,15 +1319,104 @@
     .systems-map-box.is-dimmed .map-link.is-active {
       stroke-opacity: 1;
       stroke-width: 2.8;
-      stroke: var(--pri-light);
+      stroke: #38bdf8;
+      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6));
     }
     .map-text {
       font-family: var(--font-body);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13.5px;
       fill: var(--fg);
       text-anchor: middle;
       pointer-events: none;
+    }
+
+    /* Recruiter Interactive Telemetry HUD Card */
+    .map-inspector-hud {
+      margin-top: 18px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    :root[data-theme="light"] .map-inspector-hud {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(2, 132, 199, 0.25);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+    .hud-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .hud-kicker {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent-green);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .hud-title {
+      font-size: 18px;
+      color: var(--fg-title);
+      margin: 2px 0 0;
+      font-weight: 700;
+    }
+    .hud-status-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--pri-light);
+      background: rgba(2, 132, 199, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.04em;
+    }
+    .hud-desc {
+      font-size: 13.5px;
+      color: var(--mut);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .hud-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hud-tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .hud-btn-action {
+      background: linear-gradient(135deg, var(--pri), #0ea5e9);
+      color: #fff;
+      border: none;
+      padding: 7px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px var(--pri-glow);
+    }
+    .hud-btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
     }
 
     /* ==========================================================================
@@ -1622,6 +1853,21 @@
       background: #030712 !important;
       border: 1px solid var(--line) !important;
     }
+    .mockup-frame.phone-frame {
+      max-width: 240px !important;
+      width: 240px !important;
+      max-height: 460px !important;
+      height: 460px !important;
+      margin: 0 auto !important;
+      border-radius: 36px !important;
+      border: 7px solid #1e293b !important;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7) !important;
+      overflow: hidden !important;
+      background: #000000 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
     .mockup-frame img {
       display: block !important;
       width: 100% !important;
@@ -1631,6 +1877,24 @@
       object-fit: contain !important;
       object-position: center top !important;
       background: #030712 !important;
+    }
+    .mockup-frame.phone-frame img {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 460px !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+      border-radius: 28px !important;
+      background: #000000 !important;
+    }
+    #p-sisgo, #p-oop {
+      align-items: center !important;
+    }
+    #p-sisgo .project-media-col, #p-oop .project-media-col {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
 
     /* --------------------------------------------------------------------------
@@ -1705,7 +1969,7 @@
     }
     .hud-topology-svg {
       width: 100%;
-      height: 160px;
+      height: 180px;
       display: block;
       overflow: visible;
     }
@@ -1714,24 +1978,22 @@
       transition: transform 0.2s ease;
     }
     .topo-node:hover {
-      transform: scale(1.08);
+      transform: scale(1.06);
       transform-origin: center;
     }
     .topo-node text {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      fill: #cbd5e1;
-      font-weight: 600;
+      font-family: var(--font-display), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       text-anchor: middle;
+      dominant-baseline: middle;
       pointer-events: none;
     }
     .topo-node circle.glow-ring {
       animation: pulse-ring 2.5s infinite;
     }
     @keyframes pulse-ring {
-      0% { r: 16; opacity: 0.7; }
-      50% { r: 24; opacity: 0.1; }
-      100% { r: 16; opacity: 0.7; }
+      0% { r: 24; opacity: 0.7; }
+      50% { r: 33; opacity: 0.12; }
+      100% { r: 24; opacity: 0.7; }
     }
     .topo-line {
       stroke: rgba(56, 189, 248, 0.35);
@@ -1957,202 +2219,6 @@
       margin-top: 4px;
     }
 
-    /* Simulate Pipeline Button */
-    .btn-simulate-pipeline {
-      background: rgba(2, 132, 199, 0.12) !important;
-      border-color: rgba(56, 189, 248, 0.4) !important;
-      color: #38bdf8 !important;
-      font-weight: 600;
-    }
-    .btn-simulate-pipeline:hover {
-      background: var(--pri) !important;
-      color: #fff !important;
-      border-color: var(--pri) !important;
-      box-shadow: 0 4px 18px var(--pri-glow);
-    }
-
-    /* --------------------------------------------------------------------------
-       ENHANCEMENT 4: LIVE REQUEST FLOW SIMULATOR SECTION
-       -------------------------------------------------------------------------- */
-    .simulator-section {
-      padding: 90px 0;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 50%, var(--bg) 100%);
-      border-top: 1px solid var(--line);
-      position: relative;
-      overflow: hidden;
-    }
-    .simulator-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line-bright);
-      border-radius: var(--radius-lg);
-      padding: 36px 32px;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
-    .simulator-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .sim-controls {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .btn-run-sim {
-      background: linear-gradient(135deg, var(--pri), var(--accent-green));
-      color: #fff;
-      font-weight: 700;
-      font-size: 13.5px;
-      padding: 10px 22px;
-      border-radius: var(--radius-full);
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 20px var(--pri-glow);
-      transition: all 0.25s ease;
-    }
-    .btn-run-sim:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--accent-green-glow);
-    }
-    .btn-run-sim:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* 5-Stage Interactive Pipeline Flow Track */
-    .pipeline-track {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      position: relative;
-      margin-bottom: 28px;
-    }
-    @media (max-width: 900px) {
-      .pipeline-track {
-        grid-template-columns: 1fr;
-      }
-    }
-    .pipeline-stage {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 18px 14px;
-      position: relative;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    :root[data-theme="light"] .pipeline-stage {
-      background: rgba(241, 245, 249, 0.9);
-    }
-    .pipeline-stage:hover {
-      border-color: var(--pri-light);
-      background: var(--tint);
-    }
-    .pipeline-stage.stage-active {
-      border-color: #38bdf8;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
-      transform: translateY(-3px);
-      background: rgba(2, 132, 199, 0.15);
-    }
-    .pipeline-stage.stage-done {
-      border-color: var(--accent-green);
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
-    }
-    .stage-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: #94a3b8;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .stage-status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-    }
-    .stage-active .stage-status-dot {
-      background: #38bdf8;
-      box-shadow: 0 0 8px #38bdf8;
-      animation: pulse 1.5s infinite;
-    }
-    .stage-done .stage-status-dot {
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
-    }
-    .stage-name {
-      font-family: var(--font-display);
-      font-size: 14.5px;
-      font-weight: 700;
-      color: var(--fg-title);
-      margin-bottom: 4px;
-    }
-    .stage-desc {
-      font-size: 11.5px;
-      color: var(--mut);
-      line-height: 1.4;
-    }
-    .stage-latency {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      color: #38bdf8;
-      margin-top: 8px;
-      font-weight: 600;
-    }
-
-    /* Simulator Live Telemetry Terminal */
-    .sim-terminal {
-      background: #020617;
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      font-family: var(--font-mono);
-    }
-    .sim-term-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 16px;
-      background: rgba(15, 23, 42, 0.9);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 11px;
-      color: #94a3b8;
-    }
-    .sim-term-logs {
-      padding: 16px;
-      min-height: 160px;
-      max-height: 220px;
-      overflow-y: auto;
-      font-size: 12px;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      color: #cbd5e1;
-    }
-    .sim-log-line {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      word-break: break-word;
-    }
-    .sim-time { color: #64748b; font-size: 11px; }
-    .sim-ok { color: #10b981; font-weight: 700; }
-    .sim-hi { color: #38bdf8; font-weight: 600; }
-    .sim-warn { color: #f59e0b; }
-
     /* --------------------------------------------------------------------------
        ENHANCEMENT 5: INTERACTIVE LIVE CODE SNIPPET BOX
        -------------------------------------------------------------------------- */
@@ -2238,22 +2304,33 @@
     }
     .ide-line-table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
     }
     .ide-line-table td {
       padding: 0;
       vertical-align: top;
     }
-    .ide-ln {
-      width: 40px;
+    .ide-line-table td.ide-ln {
+      width: 54px;
+      min-width: 54px;
+      max-width: 54px;
+      padding: 2px 16px 2px 0 !important;
       user-select: none;
       color: #475569;
       text-align: right;
-      padding-right: 18px;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+      font-variant-numeric: tabular-nums;
+      vertical-align: top;
+      white-space: nowrap;
     }
-    .ide-code {
+    .ide-line-table td.ide-code {
+      padding: 2px 0 2px 18px !important;
       white-space: pre-wrap;
       word-break: break-all;
+      vertical-align: top;
+      font-family: var(--font-mono);
     }
     /* Syntax Highlight Tokens */
     .c-kw { color: #c084fc; font-weight: 600; }
@@ -2288,6 +2365,336 @@
     /* --------------------------------------------------------------------------
        ENHANCEMENT 6: ⌘K COMMAND PALETTE (SPOTLIGHT SEARCH)
        -------------------------------------------------------------------------- */
+    /* Hero Identity Typography & Tech Stack Badges (Inspired by Reference Designs) */
+    .hero-greeting {
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 600;
+      color: var(--mut);
+      margin-bottom: 4px;
+      font-family: var(--font-body);
+      letter-spacing: 0.02em;
+    }
+    .hero-title {
+      font-size: clamp(48px, 6.4vw, 78px);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+      font-family: var(--font-heading);
+    }
+    .hero-title span.gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-role-headline {
+      font-size: clamp(17px, 2vw, 23px);
+      font-weight: 700;
+      color: var(--pri-light);
+      margin-bottom: 16px;
+      font-family: var(--font-mono);
+      letter-spacing: -0.01em;
+    }
+    :root[data-theme="light"] .hero-role-headline {
+      color: #0284c7;
+    }
+    .hero-tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+    .hero-tech-pill {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--fg);
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+    .hero-tech-pill:hover {
+      background: rgba(2, 132, 199, 0.2);
+      border-color: var(--pri-light);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    :root[data-theme="light"] .hero-tech-pill {
+      background: #f1f5f9;
+      border-color: rgba(15, 23, 42, 0.12);
+      color: #334155;
+    }
+    :root[data-theme="light"] .hero-tech-pill:hover {
+      background: rgba(2, 132, 199, 0.12);
+      border-color: #0284c7;
+      color: #0284c7;
+    }
+
+    /* Interactive Navbar Search Bar & Dropdown */
+    .nav-search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .nav-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: var(--radius-full);
+      padding: 3px 5px 3px 12px;
+      height: 38px;
+      width: 250px;
+      transition: all 0.25s ease;
+      cursor: text;
+    }
+    .nav-search-bar:focus-within, .nav-search-bar.active {
+      width: 315px;
+      border-color: var(--pri-light);
+      background: rgba(15, 23, 42, 0.98);
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.35);
+    }
+    :root[data-theme="light"] .nav-search-bar {
+      background: #f8fafc;
+      border-color: rgba(2, 132, 199, 0.3);
+    }
+    :root[data-theme="light"] .nav-search-bar:focus-within, :root[data-theme="light"] .nav-search-bar.active {
+      background: #ffffff;
+      border-color: var(--pri);
+      box-shadow: 0 0 20px rgba(2, 132, 199, 0.2);
+    }
+    .nav-search-icon-btn {
+      background: transparent;
+      border: none;
+      color: var(--pri-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .nav-search-icon-btn:hover {
+      transform: scale(1.1);
+    }
+    :root[data-theme="light"] .nav-search-icon-btn {
+      color: var(--pri);
+    }
+    .nav-search-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 13px;
+      font-family: var(--font-body);
+      width: 100%;
+    }
+    .nav-search-input::placeholder {
+      color: #64748b;
+    }
+    :root[data-theme="light"] .nav-search-input {
+      color: #0f172a;
+    }
+    .nav-search-clear {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 17px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0 4px;
+      transition: color 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-search-clear:hover {
+      color: #f87171;
+    }
+    .nav-search-action-btn {
+      background: linear-gradient(135deg, var(--pri), #0ea5e9);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 5px 13px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px var(--pri-glow);
+    }
+    .nav-search-action-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
+      background: linear-gradient(135deg, #0ea5e9, var(--pri-light));
+    }
+    :root[data-theme="light"] .nav-search-action-btn {
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      color: #fff;
+    }
+
+    @keyframes popCmd {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Floating Autocomplete Dropdown under Navbar Search Bar */
+    .nav-search-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      width: 420px;
+      max-width: 90vw;
+      background: rgba(9, 19, 34, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: var(--radius-md);
+      box-shadow: 0 25px 65px -12px rgba(0, 0, 0, 0.95), 0 0 30px rgba(2, 132, 199, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      max-height: 440px;
+      overflow-y: auto;
+      padding: 8px;
+      z-index: 999999 !important;
+      animation: popCmd 0.18s ease-out;
+    }
+    :root[data-theme="light"] .nav-search-dropdown {
+      background: #ffffff;
+      border-color: rgba(2, 132, 199, 0.35);
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.2), 0 0 25px rgba(2, 132, 199, 0.15);
+    }
+    .nav-search-header {
+      padding: 7px 10px 8px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--pri-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    :root[data-theme="light"] .nav-search-header {
+      color: var(--pri);
+      border-color: rgba(2, 132, 199, 0.2);
+    }
+    .nav-search-footer {
+      padding: 8px 10px 4px;
+      font-size: 10.5px;
+      color: #64748b;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 4px;
+    }
+    .nav-search-footer kbd {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--pri-light);
+      font-family: var(--font-mono);
+    }
+    :root[data-theme="light"] .nav-search-footer {
+      color: #94a3b8;
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+    :root[data-theme="light"] .nav-search-footer kbd {
+      background: rgba(0, 0, 0, 0.06);
+      color: var(--pri);
+    }
+    .nav-search-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: #cbd5e1;
+      font-size: 13px;
+      transition: all 0.15s ease;
+      margin-bottom: 2px;
+      gap: 10px;
+    }
+    .nav-search-item:hover, .nav-search-item.selected {
+      background: rgba(2, 132, 199, 0.2);
+      color: #fff;
+      transform: translateX(3px);
+    }
+    :root[data-theme="light"] .nav-search-item {
+      color: #334155;
+    }
+    :root[data-theme="light"] .nav-search-item:hover, :root[data-theme="light"] .nav-search-item.selected {
+      background: rgba(2, 132, 199, 0.1);
+      color: #0284c7;
+    }
+    .nav-search-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      flex: 1;
+    }
+    .nav-search-item-left span.item-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .nav-search-item-text {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .nav-search-item-text strong {
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .nav-search-item-text small {
+      font-size: 11px;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    :root[data-theme="light"] .nav-search-item-text small {
+      color: #64748b;
+    }
+    .nav-search-tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
+    :root[data-theme="light"] .nav-search-tag {
+      background: rgba(15, 23, 42, 0.06);
+      color: #64748b;
+    }
+    .nav-search-empty {
+      padding: 20px;
+      text-align: center;
+      color: #64748b;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+    }
+
     .cmd-k-btn {
       background: rgba(2, 132, 199, 0.08);
       border: 1px solid rgba(56, 189, 248, 0.3);
@@ -2319,224 +2726,9 @@
       color: var(--pri-light);
     }
 
-    #cmd-palette-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(2, 6, 23, 0.8);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      z-index: 99999 !important;
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 90px 18px 20px;
-    }
-    #cmd-palette-backdrop.open {
-      display: flex !important;
-    }
-    :root[data-theme="light"] #cmd-palette-backdrop {
-      background: rgba(15, 23, 42, 0.45);
-    }
-    :root[data-theme="light"] .cmd-dialog {
-      background: #ffffff;
-      border-color: rgba(2, 132, 199, 0.3);
-      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.25), 0 0 30px rgba(2, 132, 199, 0.15);
-    }
-    :root[data-theme="light"] .cmd-search-row {
-      background: #f8fafc;
-      border-bottom-color: rgba(15, 23, 42, 0.08);
-    }
-    :root[data-theme="light"] .cmd-search-input {
-      color: #0f172a;
-    }
-    :root[data-theme="light"] .cmd-item {
-      color: #334155;
-    }
-    :root[data-theme="light"] .cmd-item:hover, :root[data-theme="light"] .cmd-item.selected {
-      background: rgba(2, 132, 199, 0.1);
-      color: #0284c7;
-    }
-    :root[data-theme="light"] .cmd-footer-help {
-      background: #f8fafc;
-      border-top-color: rgba(15, 23, 42, 0.08);
-      color: #64748b;
-    }
-    .cmd-dialog {
-      background: #091322;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(2, 132, 199, 0.3);
-      border-radius: var(--radius-md);
-      width: 100%;
-      max-width: 620px;
-      overflow: hidden;
-      animation: popCmd 0.2s ease-out;
-    }
-    @keyframes popCmd {
-      from { transform: scale(0.96) translateY(-10px); opacity: 0; }
-      to { transform: scale(1) translateY(0); opacity: 1; }
-    }
-    .cmd-search-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(15, 23, 42, 0.7);
-    }
-    .cmd-search-input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-size: 15px;
-      width: 100%;
-      font-family: var(--font-body);
-    }
-    .cmd-search-input::placeholder {
-      color: #64748b;
-    }
-    .cmd-esc-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2px 7px;
-      border-radius: 4px;
-      color: #94a3b8;
-    }
-    .cmd-results-list {
-      max-height: 380px;
-      overflow-y: auto;
-      padding: 8px;
-    }
-    .cmd-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 14px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      color: #cbd5e1;
-      font-size: 13.5px;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-    .cmd-item:hover, .cmd-item.selected {
-      background: rgba(2, 132, 199, 0.2);
-      color: #fff;
-    }
-    .cmd-item-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cmd-category-tag {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.07);
-      color: #94a3b8;
-    }
-    .cmd-footer-help {
-      padding: 10px 16px;
-      background: rgba(15, 23, 42, 0.95);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #64748b;
-    }
 
-    /* --------------------------------------------------------------------------
-       ENHANCEMENT 7: RECRUITER / EXECUTIVE FAST MODE
-       -------------------------------------------------------------------------- */
-    .recruiter-toggle-btn {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      color: #fbbf24;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .recruiter-toggle-btn:hover {
-      background: rgba(245, 158, 11, 0.2);
-      border-color: #fbbf24;
-      box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);
-    }
-    .recruiter-zap {
-      animation: bounce 1.8s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2px); }
-    }
 
-    /* Floating Recruiter Executive Bar */
-    #recruiter-banner {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      z-index: 101;
-      background: rgba(12, 22, 44, 0.95);
-      border: 1px solid #fbbf24;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.35);
-      border-radius: var(--radius-full);
-      padding: 10px 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      max-width: 90vw;
-    }
-    #recruiter-banner.visible {
-      transform: translateX(-50%) translateY(0);
-    }
-    .recruiter-banner-text {
-      font-size: 13px;
-      color: #f1f5f9;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .recruiter-banner-text strong {
-      color: #fbbf24;
-    }
-    .recruiter-banner-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
 
-    /* Fast Mode Body Styling Changes */
-    body.recruiter-mode-active .stats-ribbon {
-      border-color: #fbbf24;
-      box-shadow: 0 0 35px rgba(245, 158, 11, 0.25);
-    }
-    body.recruiter-mode-active .stat-num {
-      color: #fbbf24 !important;
-      text-shadow: 0 0 18px rgba(245, 158, 11, 0.5);
-    }
-    body.recruiter-mode-active .btn-primary {
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.6) !important;
-    }
-    body.recruiter-mode-active .project-tagline {
-      color: #38bdf8 !important;
-      font-weight: 700;
-    }
 
   
     /* ==========================================================================
@@ -2799,24 +2991,35 @@
       .nav-links {
         display: none !important;
       }
-    }
-    @media (max-width: 768px) {
-      .cmd-k-btn kbd {
-        display: none !important;
+      .nav-search-bar {
+        width: 190px !important;
       }
-      .recruiter-toggle-btn span:not(.recruiter-zap) {
-        display: none !important;
+      .nav-search-bar:focus-within, .nav-search-bar.active {
+        width: 240px !important;
       }
-      .recruiter-toggle-btn {
-        padding: 6px 10px !important;
+      .nav-search-dropdown {
+        width: 340px !important;
       }
     }
-    @media (max-width: 540px) {
-      .cmd-k-btn span {
-        display: none !important;
+    @media (max-width: 640px) {
+      .nav-search-bar {
+        width: 140px !important;
+        padding: 3px 4px 3px 8px !important;
       }
-      .cmd-k-btn {
-        padding: 6px 10px !important;
+      .nav-search-bar:focus-within, .nav-search-bar.active {
+        width: 190px !important;
+      }
+      .nav-search-action-btn {
+        padding: 4px 9px !important;
+        font-size: 10.5px !important;
+      }
+      .nav-search-dropdown {
+        position: fixed !important;
+        top: 74px !important;
+        left: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+        max-width: none !important;
       }
       .nav-brand-badge {
         display: none !important;
@@ -2840,17 +3043,18 @@
   <nav aria-label="Main Navigation">
     <div class="wrap">
       <div class="nav-brand" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-        <div class="nav-logo-icon">M</div>
+        <div class="nav-avatar-wrap">
+          <img src="assets/mustafa_moin.jpg" alt="Mustafa Moin" class="nav-avatar-img">
+          <span class="nav-avatar-dot" title="Available for Global Roles &amp; Contracts"></span>
+        </div>
         <div class="nav-brand-text">
           <span class="nav-brand-name">Mustafa Moin</span>
-          <span class="nav-brand-badge"><span class="pulse-dot"></span> Full Stack &amp; AI Systems</span>
         </div>
       </div>
 
       <div class="nav-links">
         <a href="#hero" class="active">Overview</a>
         <a href="#work">Systems</a>
-        <a href="#pipeline-simulator">Pipeline</a>
         <a href="#code-showcase">Code</a>
         <a href="#sdgs">SDGs</a>
         <a href="#privacy">Privacy</a>
@@ -2865,18 +3069,19 @@
           <svg id="sound-icon-off" style="display:none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
         </button>
 
-        <!-- ⌘K Command Palette Button -->
-        <button id="cmd-k-trigger" class="cmd-k-btn" onclick="openCmdPalette()" aria-label="Open Command Palette (Ctrl+K)" title="Spotlight Search (Ctrl+K)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <span>Search</span>
-          <kbd>⌘K</kbd>
-        </button>
+        <!-- Unified Navbar Search Engine & Live Autocomplete -->
+        <div class="nav-search-wrap" id="nav-search-wrap">
+          <div class="nav-search-bar" id="nav-search-bar" onclick="focusNavSearch()">
+            <button type="button" class="nav-search-icon-btn" onclick="submitNavSearch(event)" title="Search">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search projects, tech, CV, SDGs..." autocomplete="off" spellcheck="false" aria-label="Search portfolio" onclick="event.stopPropagation(); handleNavSearchFocus();" onfocus="handleNavSearchFocus()" oninput="handleNavSearchInput(this.value)" onkeydown="handleNavSearchKeyDown(event)">
+            <button type="button" id="nav-search-clear" class="nav-search-clear" onclick="clearNavSearch(event)" title="Clear search" style="display:none;">&times;</button>
+            <button type="button" class="nav-search-action-btn" onclick="submitNavSearch(event)" title="Execute search">Search</button>
+          </div>
+          <div id="nav-search-dropdown" class="nav-search-dropdown" style="display:none;"></div>
+        </div>
 
-        <!-- ⚡ 60s Recruiter Executive Fast Mode -->
-        <button id="recruiter-mode-toggle" class="recruiter-toggle-btn" onclick="toggleRecruiterMode()" aria-label="Toggle 60s Recruiter Executive View" title="One-Click 60-Second Recruiter Summary">
-          <span class="recruiter-zap">⚡</span>
-          <span>60s Fast View</span>
-        </button>
 
         <!-- Theme Toggle (Default is Deep Cosmic Blue; Light is user-selectable) -->
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Theme">
@@ -2900,18 +3105,14 @@
 
   <!-- Mobile Drawer -->
   <div id="mobile-drawer">
-    <div style="padding: 6px 0 12px; display: flex; gap: 8px;">
-      <button class="btn btn-outline" style="flex:1; padding: 9px 12px; font-size: 13px; display:flex; align-items:center; justify-content:center; gap:6px;" onclick="closeDrawer(); openCmdPalette();">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <span>Search (⌘K)</span>
-      </button>
-      <button class="btn btn-outline" style="flex:1; padding: 9px 12px; font-size: 13px; display:flex; align-items:center; justify-content:center; gap:6px; color:#fbbf24; border-color:rgba(245,158,11,0.35);" onclick="closeDrawer(); toggleRecruiterMode();">
-        <span>⚡ 60s Fast View</span>
+    <div style="padding: 6px 0 12px;">
+      <button class="btn btn-outline" style="width:100%; padding: 10px 14px; font-size: 13.5px; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="closeDrawer(); focusNavSearch(); window.scrollTo({top:0, behavior:'smooth'});">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search Portfolio</span>
       </button>
     </div>
     <a href="#hero" onclick="closeDrawer()">Overview</a>
     <a href="#work" onclick="closeDrawer()">Deployed Systems</a>
-    <a href="#pipeline-simulator" onclick="closeDrawer()">Pipeline Simulator</a>
     <a href="#code-showcase" onclick="closeDrawer()">Code Showcase</a>
     <a href="#sdgs" onclick="closeDrawer()">Global Impact</a>
     <a href="#privacy" onclick="closeDrawer()">Privacy Architecture</a>
@@ -2929,31 +3130,29 @@
         
         <!-- Left: Narrative & Pitch -->
         <div class="hero-text-col">
-          <div class="hero-badge-row">
-            <span class="hero-badge highlight-badge">
-              <span class="pulse-dot"></span>
-              Available for Global Engineering Roles &amp; Contracts
-            </span>
-            <span class="hero-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-              6 Production Platforms Deployed
-            </span>
-          </div>
-
-          <h1 class="hero-title">
-            Architecting <span class="gradient-text">Scalable Full Stack Systems</span> &amp; Production AI Solutions.
-          </h1>
+          <div class="hero-greeting">Hello, I'm</div>
+          <h1 class="hero-title">Mustafa <span class="gradient-text">Moin</span></h1>
+          <div class="hero-role-headline">Full Stack Developer &amp; AI Systems Engineer</div>
 
           <div class="typewriter-box">
             <span id="typewriter"></span>
           </div>
 
           <p class="hero-desc">
-            Final-year Computer Science student and full stack software engineer from Karachi, Pakistan. 
-            Creator of six production platforms spanning <strong>fine-tuned LLM inference</strong>, 
+            Full Stack Developer &amp; AI Systems Engineer based in Karachi, Pakistan. 
+            Architect of six production platforms spanning <strong>fine-tuned LLM inference</strong>, 
             <strong>multilingual RTL accessibility</strong>, <strong>high-concurrency cloud APIs</strong>, and 
-            <strong>privacy-by-design architectures</strong> built for global impact.
+            <strong>privacy-by-design architectures</strong> engineered for global scale and impact.
           </p>
+
+          <div class="hero-tech-pills">
+            <span class="hero-tech-pill">⚡ FastAPI</span>
+            <span class="hero-tech-pill">📱 React Native</span>
+            <span class="hero-tech-pill">🐍 Python</span>
+            <span class="hero-tech-pill">🐘 PostgreSQL</span>
+            <span class="hero-tech-pill">🧠 Groq &amp; LoRA</span>
+            <span class="hero-tech-pill">🐳 Docker</span>
+          </div>
 
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#work">
@@ -2998,7 +3197,7 @@
 
             <!-- Interactive Architecture Topology SVG -->
             <div class="hud-topology-wrap">
-              <svg class="hud-topology-svg" viewBox="0 0 480 165">
+              <svg class="hud-topology-svg" viewBox="0 0 520 185">
                 <defs>
                   <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#0284c7" />
@@ -3011,55 +3210,55 @@
                 </defs>
 
                 <!-- Connecting Data Flow Paths with Dynamic Dashes -->
-                <path d="M 60 82 L 170 42" class="topo-line" />
-                <path d="M 60 82 L 170 122" class="topo-line" />
-                <path d="M 170 42 L 315 42" class="topo-line" />
-                <path d="M 170 122 L 315 122" class="topo-line" />
-                <path d="M 315 42 L 420 82" class="topo-line" />
-                <path d="M 315 122 L 420 82" class="topo-line" />
-                <path d="M 170 42 L 315 122" class="topo-line" style="opacity:0.25;" />
+                <path d="M 62 92 L 185 48" class="topo-line" />
+                <path d="M 62 92 L 185 136" class="topo-line" />
+                <path d="M 185 48 L 335 48" class="topo-line" />
+                <path d="M 185 136 L 335 136" class="topo-line" />
+                <path d="M 335 48 L 458 92" class="topo-line" />
+                <path d="M 335 136 L 458 92" class="topo-line" />
+                <path d="M 185 48 L 335 136" class="topo-line" style="opacity:0.25;" />
 
                 <!-- Nodes with Generous Hit Radii & Clear Labels -->
                 <!-- 1. Client / Edge -->
-                <g class="topo-node" onclick="triggerHudNode('client')" transform="translate(60, 82)">
-                  <circle r="24" fill="rgba(15,23,42,0.95)" stroke="#38bdf8" stroke-width="2" />
-                  <circle r="18" class="glow-ring" fill="none" stroke="#38bdf8" stroke-width="1.5" />
-                  <text y="0" style="font-size:10.5px; fill:#fff; font-weight:700;">CLIENT</text>
-                  <text y="13" style="font-size:8px; fill:#38bdf8; font-weight:600;">RTL &amp; Web</text>
+                <g class="topo-node" onclick="triggerHudNode('client')" transform="translate(62, 92)">
+                  <circle r="32" fill="rgba(15,23,42,0.95)" stroke="#38bdf8" stroke-width="2.5" />
+                  <circle r="26" class="glow-ring" fill="none" stroke="#38bdf8" stroke-width="1.5" />
+                  <text y="-6" style="font-size:10px; fill:#fff; font-weight:800; letter-spacing:0.04em;">CLIENT</text>
+                  <text y="8" style="font-size:8.5px; fill:#38bdf8; font-weight:700;">RTL &amp; Web</text>
                 </g>
 
                 <!-- 2. FastAPI Gateway -->
-                <g class="topo-node" onclick="triggerHudNode('gateway')" transform="translate(170, 42)">
-                  <circle r="23" fill="rgba(15,23,42,0.95)" stroke="#10b981" stroke-width="2" />
-                  <text y="0" style="font-size:10px; fill:#fff; font-weight:700;">GATEWAY</text>
-                  <text y="12" style="font-size:8px; fill:#10b981; font-weight:600;">FastAPI</text>
+                <g class="topo-node" onclick="triggerHudNode('gateway')" transform="translate(185, 48)">
+                  <circle r="31" fill="rgba(15,23,42,0.95)" stroke="#10b981" stroke-width="2.5" />
+                  <text y="-6" style="font-size:9.5px; fill:#fff; font-weight:800; letter-spacing:0.04em;">GATEWAY</text>
+                  <text y="8" style="font-size:8.5px; fill:#10b981; font-weight:700;">FastAPI</text>
                 </g>
 
                 <!-- 3. RLS Security Layer -->
-                <g class="topo-node" onclick="triggerHudNode('rls')" transform="translate(170, 122)">
-                  <circle r="23" fill="rgba(15,23,42,0.95)" stroke="#fbbf24" stroke-width="2" />
-                  <text y="0" style="font-size:10px; fill:#fff; font-weight:700;">RLS SEC</text>
-                  <text y="12" style="font-size:8px; fill:#fbbf24; font-weight:600;">Postgres</text>
+                <g class="topo-node" onclick="triggerHudNode('rls')" transform="translate(185, 136)">
+                  <circle r="31" fill="rgba(15,23,42,0.95)" stroke="#fbbf24" stroke-width="2.5" />
+                  <text y="-6" style="font-size:9.5px; fill:#fff; font-weight:800; letter-spacing:0.04em;">RLS SEC</text>
+                  <text y="8" style="font-size:8.5px; fill:#fbbf24; font-weight:700;">Postgres</text>
                 </g>
 
                 <!-- 4. LLM Pipeline -->
-                <g class="topo-node" onclick="triggerHudNode('llm')" transform="translate(315, 42)">
-                  <circle r="23" fill="rgba(15,23,42,0.95)" stroke="#8b5cf6" stroke-width="2" />
-                  <text y="0" style="font-size:10px; fill:#fff; font-weight:700;">LLM CORE</text>
-                  <text y="12" style="font-size:8px; fill:#c084fc; font-weight:600;">Groq/Llama</text>
+                <g class="topo-node" onclick="triggerHudNode('llm')" transform="translate(335, 48)">
+                  <circle r="31" fill="rgba(15,23,42,0.95)" stroke="#8b5cf6" stroke-width="2.5" />
+                  <text y="-6" style="font-size:9.5px; fill:#fff; font-weight:800; letter-spacing:0.04em;">LLM CORE</text>
+                  <text y="8" style="font-size:8.5px; fill:#c084fc; font-weight:700;">Groq/Llama</text>
                 </g>
 
                 <!-- 5. Shredder / Retention -->
-                <g class="topo-node" onclick="triggerHudNode('shredder')" transform="translate(315, 122)">
-                  <circle r="23" fill="rgba(15,23,42,0.95)" stroke="#ec4899" stroke-width="2" />
-                  <text y="0" style="font-size:9.5px; fill:#fff; font-weight:700;">72h SHRED</text>
-                  <text y="12" style="font-size:8px; fill:#f472b6; font-weight:600;">Auto-Purge</text>
+                <g class="topo-node" onclick="triggerHudNode('shredder')" transform="translate(335, 136)">
+                  <circle r="31" fill="rgba(15,23,42,0.95)" stroke="#ec4899" stroke-width="2.5" />
+                  <text y="-6" style="font-size:9.5px; fill:#fff; font-weight:800; letter-spacing:0.04em;">72h SHRED</text>
+                  <text y="8" style="font-size:8.5px; fill:#f472b6; font-weight:700;">Auto-Purge</text>
                 </g>
 
                 <!-- 6. Verified Output -->
-                <g class="topo-node" onclick="triggerHudNode('verified')" transform="translate(420, 82)">
-                  <circle r="24" fill="url(#nodeGrad)" stroke="#fff" stroke-width="2" filter="url(#hudGlow)" />
-                  <text y="4" style="fill:#fff; font-weight:800; font-size:11px;">200 OK</text>
+                <g class="topo-node" onclick="triggerHudNode('verified')" transform="translate(458, 92)">
+                  <circle r="32" fill="url(#nodeGrad)" stroke="#fff" stroke-width="2.5" filter="url(#hudGlow)" />
+                  <text y="0" style="fill:#fff; font-weight:800; font-size:12px; letter-spacing:0.04em;">200 OK</text>
                 </g>
               </svg>
             </div>
@@ -3166,14 +3365,10 @@
         <!-- 1. SISGO -->
         <article class="project-card" id="p-sisgo" data-category="mobile data civic">
           <div class="project-media-col">
-            <div class="mockup-frame">
-              <div class="mockup-bar">
-                <i></i><i></i><i></i>
-                <span class="mockup-url">https://production.internal/sisgo</span>
-              </div>
-              <img src="assets/sisgo.jpg" alt="SisGo preview screenshot" loading="lazy">
+            <div class="mockup-frame phone-frame">
+              <img src="assets/sisgo.png" alt="SisGo safe mobility mobile application interface" loading="lazy">
             </div>
-            <p class="media-caption">SisGo Rider &amp; Driver Authentication Architecture</p>
+            <p class="media-caption">SisGo Rider &amp; Driver Safe Mobility Mobile Interface</p>
           </div>
           <div class="project-info-col">
             <div class="project-badges">
@@ -3262,9 +3457,6 @@
               <button class="btn btn-outline" onclick="openCaseStudyModal('sisgo')">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                 <span>Architecture &amp; Case Study</span>
-              </button>
-              <button class="btn btn-simulate-pipeline" onclick="triggerRequestSimulator('sisgo')">
-                <span>▶ Simulate Request Pipeline</span>
               </button>
             </div>
           </div>
@@ -3373,9 +3565,6 @@
               <button class="btn btn-outline" onclick="openCaseStudyModal('taybex')">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                 <span>Architecture &amp; Case Study</span>
-              </button>
-              <button class="btn btn-simulate-pipeline" onclick="triggerRequestSimulator('taybex')">
-                <span>▶ Simulate Request Pipeline</span>
               </button>
             </div>
           </div>
@@ -3795,115 +3984,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       SECTION: LIVE REQUEST FLOW SIMULATOR (INTERACTIVE ARCHITECTURE PIPELINE)
-       ========================================================================== -->
-  <section id="pipeline-simulator" class="simulator-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-eyebrow" style="color:var(--pri-light)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          Distributed Systems Telemetry
-        </span>
-        <h2 class="section-title">Live Request Flow Simulator</h2>
-        <p class="section-lead">
-          Static architecture diagrams are everywhere. This interactive pipeline demonstrates Mustafa's end-to-end data lifecycle in real time: 
-          from client cryptographic signing to FastAPI gateway verification, PostgreSQL Row Level Security (RLS) enforcement, 72-hour ephemeral shredding, and sub-100ms response dispatch.
-        </p>
-      </div>
 
-      <div class="simulator-card">
-        <div class="simulator-top">
-          <div>
-            <h3 style="font-size:18px; margin-bottom:4px; color:var(--fg-title);">End-to-End Authenticated Pipeline</h3>
-            <span style="font-family:var(--font-mono); font-size:12px; color:var(--mut);">Tracing: Mobile Client &rarr; FastAPI &rarr; PostgreSQL RLS &rarr; Auto-Shred &rarr; HTTP 200</span>
-          </div>
-          <div class="sim-controls">
-            <button id="btn-run-sim" class="btn-run-sim" onclick="startRequestSimulation()">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              <span>Simulate End-to-End Request</span>
-            </button>
-            <button class="icon-btn" onclick="resetRequestSimulation()" title="Reset Simulator">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- 5-Stage Interactive Pipeline Flow Track -->
-        <div class="pipeline-track" id="sim-pipeline-track">
-          <!-- Stage 1 -->
-          <div class="pipeline-stage" id="p-stage-1" onclick="selectSimStage(1)">
-            <div class="stage-badge">
-              <span>STAGE 01</span>
-              <span class="stage-status-dot"></span>
-            </div>
-            <h4 class="stage-name">Client Device</h4>
-            <p class="stage-desc">Mobile/Web app packages JWT token + signed OTP payload.</p>
-            <div class="stage-latency">&Delta;t: +0ms</div>
-          </div>
-
-          <!-- Stage 2 -->
-          <div class="pipeline-stage" id="p-stage-2" onclick="selectSimStage(2)">
-            <div class="stage-badge">
-              <span>STAGE 02</span>
-              <span class="stage-status-dot"></span>
-            </div>
-            <h4 class="stage-name">FastAPI Gateway</h4>
-            <p class="stage-desc">Rate limit check &amp; cryptographic HMAC signature verification.</p>
-            <div class="stage-latency">&Delta;t: +18ms</div>
-          </div>
-
-          <!-- Stage 3 -->
-          <div class="pipeline-stage" id="p-stage-3" onclick="selectSimStage(3)">
-            <div class="stage-badge">
-              <span>STAGE 03</span>
-              <span class="stage-status-dot"></span>
-            </div>
-            <h4 class="stage-name">PostgreSQL RLS</h4>
-            <p class="stage-desc">Row Level Security executes: auth.uid() == user_id tenant check.</p>
-            <div class="stage-latency">&Delta;t: +42ms</div>
-          </div>
-
-          <!-- Stage 4 -->
-          <div class="pipeline-stage" id="p-stage-4" onclick="selectSimStage(4)">
-            <div class="stage-badge">
-              <span>STAGE 04</span>
-              <span class="stage-status-dot"></span>
-            </div>
-            <h4 class="stage-name">72h Auto-Shred</h4>
-            <p class="stage-desc">In-memory telemetry tagged with TTL for automated hard deletion.</p>
-            <div class="stage-latency">&Delta;t: +64ms</div>
-          </div>
-
-          <!-- Stage 5 -->
-          <div class="pipeline-stage" id="p-stage-5" onclick="selectSimStage(5)">
-            <div class="stage-badge">
-              <span>STAGE 05</span>
-              <span class="stage-status-dot"></span>
-            </div>
-            <h4 class="stage-name">Success 200 OK</h4>
-            <p class="stage-desc">Encrypted response dispatched to client; audit log sealed.</p>
-            <div class="stage-latency">&Delta;t: +88ms (Total)</div>
-          </div>
-        </div>
-
-        <!-- Simulator Live Telemetry Console -->
-        <div class="sim-terminal">
-          <div class="sim-term-header">
-            <span>PIPELINE TELEMETRY LOGS // REAL-TIME DISPATCH</span>
-            <span id="sim-status-label" style="color:#10b981;">READY FOR SIMULATION</span>
-          </div>
-          <div class="sim-term-logs" id="sim-term-logs">
-            <div class="sim-log-line">
-              <span class="sim-time">[00.000ms]</span>
-              <span class="sim-ok">SYS:</span>
-              <span>Simulator initialized. Click "Simulate End-to-End Request" to dispatch glowing test telemetry packet.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- GLOBAL IMPACT & SUSTAINABLE DEVELOPMENT MATRIX -->
   <section id="sdgs">
@@ -4040,16 +4121,60 @@ const ConsentSchema = z.object({
       <div class="section-head">
         <span class="section-eyebrow">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-          Ecosystem Visualization
+          Distributed Architecture
         </span>
         <h2 class="section-title">How the Systems Connect</h2>
         <p class="section-lead">
-          Each platform is an interconnected node. Hover or tap any project or architectural theme to trace its technical dependencies, shared frameworks, and engineering standards.
+          Interactive dependency graph showing how Mustafa's 6 production platforms share microservices, AI inference pipelines, zero-trust security layers, and high-concurrency cloud standards.
         </p>
       </div>
 
+      <!-- Quick Subsystem Filter Pills -->
+      <div class="map-subsystem-bar" id="map-subsystems">
+        <button class="map-subsystem-pill active" onclick="filterMapSubsystem('all', this)">
+          <span>🌐 All Connected Systems (6)</span>
+        </button>
+        <button class="map-subsystem-pill" onclick="filterMapSubsystem('ai', this)">
+          <span>🧠 AI &amp; LLM Pipelines</span>
+        </button>
+        <button class="map-subsystem-pill" onclick="filterMapSubsystem('security', this)">
+          <span>🛡️ Zero-Trust &amp; Privacy RLS</span>
+        </button>
+        <button class="map-subsystem-pill" onclick="filterMapSubsystem('apis', this)">
+          <span>⚡ High-Concurrency Cloud APIs</span>
+        </button>
+      </div>
+
+      <!-- Interactive SVG Network Container -->
       <div class="systems-map-box" id="systems-map-wrapper">
-        <!-- SVG Canvas initialized by JS -->
+        <!-- Injected and managed dynamically via JavaScript -->
+      </div>
+
+      <!-- Recruiter Interactive Telemetry HUD (Displays Node Details on Hover / Tap) -->
+      <div class="map-inspector-hud" id="map-inspector-hud">
+        <div class="hud-header">
+          <div class="hud-title-col">
+            <span class="hud-kicker" id="hud-node-type">ARCHITECTURE NODE INSPECTOR</span>
+            <h3 class="hud-title" id="hud-node-name">SisGo: Women-Only Safe Mobility Platform</h3>
+          </div>
+          <span class="hud-status-badge" id="hud-node-badge">PRODUCTION DEPLOYED</span>
+        </div>
+        <p class="hud-desc" id="hud-node-desc">
+          Zero-knowledge transit security platform engineered with Python FastAPI, PostgreSQL Row Level Security (RLS), and automated 72-hour cryptographic shredding. Verified with 167 automated test suites.
+        </p>
+        <div class="hud-footer">
+          <div class="hud-tech-chips" id="hud-node-chips">
+            <span class="tech-chip">Python FastAPI</span>
+            <span class="tech-chip">PostgreSQL RLS</span>
+            <span class="tech-chip">React Native</span>
+            <span class="tech-chip">Supabase Auth</span>
+            <span class="tech-chip">167 Test Suites</span>
+          </div>
+          <button id="hud-action-btn" class="hud-btn-action" onclick="handleHudActionClick('sisgo')">
+            <span>Explore Case Study</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -4075,15 +4200,15 @@ const ConsentSchema = z.object({
         <!-- IDE Header / File Tabs -->
         <div class="ide-header-row">
           <div class="ide-tabs-list">
-            <button class="ide-tab active" onclick="switchCodeSnippet('fastapi', this)">
+            <button type="button" id="ide-tab-fastapi" class="ide-tab active" data-snippet="fastapi" onclick="switchCodeSnippet('fastapi', this)">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
               <span>auth_rls_dependency.py</span>
             </button>
-            <button class="ide-tab" onclick="switchCodeSnippet('lora', this)">
+            <button type="button" id="ide-tab-lora" class="ide-tab" data-snippet="lora" onclick="switchCodeSnippet('lora', this)">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
               <span>lora_finetune_llama.py</span>
             </button>
-            <button class="ide-tab" onclick="switchCodeSnippet('zod', this)">
+            <button type="button" id="ide-tab-zod" class="ide-tab" data-snippet="zod" onclick="switchCodeSnippet('zod', this)">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
               <span>bilingual_consent_schema.ts</span>
             </button>
@@ -4096,7 +4221,35 @@ const ConsentSchema = z.object({
 
         <!-- Code Editor Body with Line Numbers -->
         <div class="ide-editor-body" id="ide-code-container">
-          <!-- Populated by JavaScript switchCodeSnippet() -->
+          <table class="ide-line-table">
+<tr><td class="ide-ln">1</td><td class="ide-code"><span class="c-kw">from</span> fastapi <span class="c-kw">import</span> Depends, HTTPException, status</td></tr>
+<tr><td class="ide-ln">2</td><td class="ide-code"><span class="c-kw">from</span> fastapi.security <span class="c-kw">import</span> HTTPBearer, HTTPAuthorizationCredentials</td></tr>
+<tr><td class="ide-ln">3</td><td class="ide-code"><span class="c-kw">from</span> sqlalchemy.ext.asyncio <span class="c-kw">import</span> AsyncSession</td></tr>
+<tr><td class="ide-ln">4</td><td class="ide-code"><span class="c-kw">from</span> sqlalchemy <span class="c-kw">import</span> text</td></tr>
+<tr><td class="ide-ln">5</td><td class="ide-code">&nbsp;</td></tr>
+<tr><td class="ide-ln">6</td><td class="ide-code"><span class="c-cm"># Production RLS Session Guard for Multi-Tenant Isolation</span></td></tr>
+<tr><td class="ide-ln">7</td><td class="ide-code"><span class="c-kw">async def</span> <span class="c-fn">get_authenticated_rls_session</span>(</td></tr>
+<tr><td class="ide-ln">8</td><td class="ide-code">    creds: HTTPAuthorizationCredentials = <span class="c-fn">Depends</span>(HTTPBearer()),</td></tr>
+<tr><td class="ide-ln">9</td><td class="ide-code">    db: AsyncSession = <span class="c-fn">Depends</span>(get_db_session)</td></tr>
+<tr><td class="ide-ln">10</td><td class="ide-code">) -> AsyncSession:</td></tr>
+<tr><td class="ide-ln">11</td><td class="ide-code">    token_payload = <span class="c-fn">verify_jwt_token</span>(creds.credentials)</td></tr>
+<tr><td class="ide-ln">12</td><td class="ide-code">    user_id = token_payload.get(<span class="c-str">"sub"</span>)</td></tr>
+<tr><td class="ide-ln">13</td><td class="ide-code">    user_role = token_payload.get(<span class="c-str">"role"</span>, <span class="c-str">"rider"</span>)</td></tr>
+<tr><td class="ide-ln">14</td><td class="ide-code">&nbsp;</td></tr>
+<tr><td class="ide-ln">15</td><td class="ide-code">    <span class="c-kw">if not</span> user_id:</td></tr>
+<tr><td class="ide-ln">16</td><td class="ide-code">        <span class="c-kw">raise</span> HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)</td></tr>
+<tr><td class="ide-ln">17</td><td class="ide-code">&nbsp;</td></tr>
+<tr><td class="ide-ln">18</td><td class="ide-code">    <span class="c-cm"># Set PostgreSQL session variables to enforce Row Level Security</span></td></tr>
+<tr><td class="ide-ln">19</td><td class="ide-code">    <span class="c-kw">await</span> db.execute(</td></tr>
+<tr><td class="ide-ln">20</td><td class="ide-code">        text(<span class="c-str">"SET LOCAL request.jwt.claim.sub = :uid"</span>),</td></tr>
+<tr><td class="ide-ln">21</td><td class="ide-code">        {<span class="c-str">"uid"</span>: str(user_id)}</td></tr>
+<tr><td class="ide-ln">22</td><td class="ide-code">    )</td></tr>
+<tr><td class="ide-ln">23</td><td class="ide-code">    <span class="c-kw">await</span> db.execute(</td></tr>
+<tr><td class="ide-ln">24</td><td class="ide-code">        text(<span class="c-str">"SET LOCAL request.jwt.claim.role = :role"</span>),</td></tr>
+<tr><td class="ide-ln">25</td><td class="ide-code">        {<span class="c-str">"role"</span>: str(user_role)}</td></tr>
+<tr><td class="ide-ln">26</td><td class="ide-code">    )</td></tr>
+<tr><td class="ide-ln">27</td><td class="ide-code">    <span class="c-kw">return</span> db</td></tr>
+</table>
         </div>
 
         <!-- IDE Footer / Rationale -->
@@ -4305,7 +4458,14 @@ const ConsentSchema = z.object({
       <div class="contact-grid">
         <!-- Left: Direct Channels -->
         <div class="contact-card">
-          <h3 style="font-size:22px; margin-bottom:20px;">Contact Channels</h3>
+          <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--line);">
+            <img src="assets/mustafa_moin.jpg" alt="Mustafa Moin" style="width:58px; height:58px; border-radius:50%; object-fit:cover; object-position:top center; border:2.5px solid #38bdf8; box-shadow:0 0 16px rgba(56,189,248,0.35); flex-shrink:0;">
+            <div>
+              <div style="font-size:18px; font-weight:800; color:var(--fg-title); letter-spacing:-0.01em;">Mustafa Moin</div>
+              <div style="font-size:12.5px; color:var(--pri-light); font-weight:600;">Direct Communication &amp; Global Roles</div>
+            </div>
+          </div>
+          <h3 style="font-size:20px; margin-bottom:18px;">Contact Channels</h3>
 
           <div class="contact-item">
             <div class="contact-item-left">
@@ -4397,7 +4557,9 @@ const ConsentSchema = z.object({
   <footer>
     <div class="wrap footer-wrap">
       <div class="footer-left">
-        <div class="nav-logo-icon" style="width:30px; height:30px; font-size:15px;">M</div>
+        <div class="nav-avatar-wrap" style="width:36px; height:36px; flex-shrink:0;">
+          <img src="assets/mustafa_moin.jpg" alt="Mustafa Moin" class="nav-avatar-img" style="width:36px; height:36px; border-radius:10px; object-fit:cover; display:block;">
+        </div>
         <span>&copy; 2026 Mustafa Moin · Full Stack Developer &amp; AI Systems Engineer</span>
       </div>
       <div>
@@ -4416,41 +4578,7 @@ const ConsentSchema = z.object({
     </div>
   </div>
 
-  <!-- ==========================================================================
-       ⌘K COMMAND PALETTE SPOTLIGHT MODAL
-       ========================================================================== -->
-  <div id="cmd-palette-backdrop" class="cmd-backdrop" onclick="closeCmdPaletteOnBackdrop(event)">
-    <div class="cmd-dialog" role="dialog" aria-modal="true" aria-label="Command Palette" onclick="event.stopPropagation()">
-      <div class="cmd-search-row">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="cmd-palette-input" class="cmd-search-input" placeholder="Search projects, tech, CV, contact, or run commands..." autocomplete="off" spellcheck="false" oninput="filterCmdItems(this.value)">
-        <span class="cmd-esc-badge" onclick="closeCmdPalette()" style="cursor:pointer;" title="Close (ESC)">ESC</span>
-      </div>
-      <div class="cmd-results-list" id="cmd-results-list">
-        <!-- Populated dynamically by cmdPaletteEngine -->
-      </div>
-      <div class="cmd-footer-help">
-        <span>Use <kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
-        <span>Press <kbd>↵ Enter</kbd> to select</span>
-        <span><kbd>ESC</kbd> to exit</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- ==========================================================================
-       RECRUITER / EXECUTIVE FAST MODE STICKY BANNER
-       ========================================================================== -->
-  <div id="recruiter-banner">
-    <span class="recruiter-zap" style="font-size:16px;">⚡</span>
-    <div class="recruiter-banner-text">
-      <strong>Recruiter Fast View Active:</strong> 6 Deployed Systems &middot; FastAPI / Python / React / AI &middot; 167 Tests &middot; Immediate Hire
-    </div>
-    <div class="recruiter-banner-actions">
-      <a class="btn btn-primary" style="padding:6px 14px; font-size:12px;" href="Mustafa_Moin_CV.pdf" download="Mustafa_Moin_CV.pdf">Download CV</a>
-      <a class="btn btn-outline" style="padding:6px 14px; font-size:12px;" href="#contact">Direct Email</a>
-      <button class="icon-btn" style="width:28px; height:28px;" onclick="toggleRecruiterMode()" title="Exit Fast Mode">✕</button>
-    </div>
-  </div>
 
   <!-- ==========================================================================
        JAVASCRIPT APPLICATION CORE (STRICT ZERO-HTML-COMMENT PURE JS)
@@ -4682,14 +4810,54 @@ const ConsentSchema = z.object({
       }, 3400);
     }
 
+    // SAFE STORAGE HELPERS (Guards against SecurityError in file:// or restricted contexts)
+    function safeGetStorage(key, fallback) {
+      try {
+        if (typeof localStorage !== 'undefined') {
+          const val = localStorage.getItem(key);
+          return val !== null ? val : fallback;
+        }
+      } catch (e) {}
+      return fallback;
+    }
+
+    function safeSetStorage(key, value) {
+      try {
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem(key, value);
+        }
+      } catch (e) {}
+    }
+
     function copyToClipboard(text, successMsg) {
       successMsg = successMsg || 'Copied to clipboard!';
-      navigator.clipboard.writeText(text).then(function() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          playTactileClick('success');
+          showToast(successMsg);
+        }).catch(function() {
+          fallbackCopyText(text, successMsg);
+        });
+      } else {
+        fallbackCopyText(text, successMsg);
+      }
+    }
+
+    function fallbackCopyText(text, successMsg) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
         playTactileClick('success');
-        showToast(successMsg);
-      }).catch(function() {
+        showToast(successMsg || 'Copied to clipboard!');
+      } catch (err) {
         showToast('Could not copy automatically', '⚠️');
-      });
+      }
     }
 
     // THEME MANAGEMENT (DEFAULT: COSMIC DEEP BLUE)
@@ -4699,7 +4867,7 @@ const ConsentSchema = z.object({
 
     function applyTheme(theme) {
       document.documentElement.dataset.theme = theme;
-      localStorage.setItem('mustafa_portfolio_theme', theme);
+      safeSetStorage('mustafa_portfolio_theme', theme);
       if (theme === 'light') {
         themeSun.style.display = 'none';
         themeMoon.style.display = 'block';
@@ -4709,7 +4877,7 @@ const ConsentSchema = z.object({
       }
     }
 
-    const savedTheme = localStorage.getItem('mustafa_portfolio_theme') || 'dark';
+    const savedTheme = safeGetStorage('mustafa_portfolio_theme', 'dark');
     applyTheme(savedTheme);
 
     themeToggle.addEventListener('click', function() {
@@ -4848,11 +5016,12 @@ const ConsentSchema = z.object({
       draw();
     })();
 
-    // INTERACTIVE TERMINAL
+    // INTERACTIVE TERMINAL (SAFELY GUARDED)
     const termLogs = document.getElementById('term-logs');
     const termInput = document.getElementById('term-input');
 
     function appendTermLog(html) {
+      if (!termLogs) return;
       const line = document.createElement('div');
       line.className = 'term-msg';
       line.innerHTML = html;
@@ -4861,6 +5030,7 @@ const ConsentSchema = z.object({
     }
 
     function runTermCommand(cmd) {
+      if (!termLogs) return;
       playTactileClick('click');
       cmd = cmd.trim().toLowerCase();
       appendTermLog('<span class="term-prompt">&gt;_ ' + cmd + '</span>');
@@ -4945,15 +5115,17 @@ const ConsentSchema = z.object({
       appendTermLog('<span style="color:#ef4444;">Command not recognized: "' + cmd + '". Type <span style="color:#38bdf8;">"help"</span> for options.</span>');
     }
 
-    termInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        const val = termInput.value;
-        if (val.trim()) {
-          runTermCommand(val);
-          termInput.value = '';
+    if (termInput) {
+      termInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          const val = termInput.value;
+          if (val.trim()) {
+            runTermCommand(val);
+            termInput.value = '';
+          }
         }
-      }
-    });
+      });
+    }
 
     // PROJECT FILTERING
     function applyProjectFilter(category, btn) {
@@ -5102,12 +5274,15 @@ const ConsentSchema = z.object({
     function openCVPreview() {
       playTactileClick('click');
       modalContent.innerHTML = 
-        '<div style="margin-bottom:20px;">' +
-          '<h2 style="font-size:28px; margin-bottom:6px;">Mustafa Moin · Professional Summary</h2>' +
-          '<div style="font-size:15px; color:var(--pri-light);">Full Stack Developer &amp; AI Systems Engineer · Karachi, Pakistan</div>' +
+        '<div style="display:flex; align-items:center; gap:18px; margin-bottom:20px;">' +
+          '<img src="assets/mustafa_moin.jpg" alt="Mustafa Moin" style="width:72px; height:72px; border-radius:50%; object-fit:cover; object-position:top center; border:2.5px solid #38bdf8; box-shadow:0 0 20px rgba(56,189,248,0.4); flex-shrink:0;">' +
+          '<div>' +
+            '<h2 style="font-size:26px; margin-bottom:4px; color:var(--fg-title); letter-spacing:-0.01em;">Mustafa Moin · Professional Summary</h2>' +
+            '<div style="font-size:14px; color:var(--pri-light); font-weight:600;">Full Stack Developer &amp; AI Systems Engineer · Karachi, Pakistan</div>' +
+          '</div>' +
         '</div>' +
         '<div style="background:var(--bg-card); padding:24px; border-radius:14px; border:1px solid var(--line); font-size:15px; line-height:1.7; color:var(--mut); margin-bottom:20px;">' +
-          '<p style="margin-bottom:14px;">Final-year Computer Science student and full stack software engineer with hands-on experience in digital product design, AI-enabled tool development, and data-driven systems. Has designed, built, and deployed six end-to-end digital platforms that integrate large language models, REST APIs, database management, analytics dashboards, multilingual RTL interfaces, and privacy-by-design data protection.</p>' +
+          '<p style="margin-bottom:14px;">Full Stack Developer and AI Systems Engineer with proven hands-on experience in digital product architecture, distributed backend services, and production AI systems integration. Has designed, built, and deployed six end-to-end platforms that integrate large language models, high-performance REST APIs, database management, analytics dashboards, multilingual RTL interfaces, and privacy-by-design data protection.</p>' +
           '<p>Ready for high-impact software engineering roles, full-stack application development, and AI integration initiatives worldwide.</p>' +
         '</div>' +
         '<div style="display:flex; gap:14px; flex-wrap:wrap;">' +
@@ -5140,14 +5315,214 @@ const ConsentSchema = z.object({
       }
     });
 
-    // SYSTEMS CONNECTION NETWORK
+    // ==========================================================================
+    // ELEVATED SYSTEMS CONNECTION NETWORK (INTERACTIVE GRAPH & TELEMETRY HUD)
+    // ==========================================================================
+    const MAP_TELEMETRY = {
+      sisgo: {
+        type: 'CIVIC TRANSIT ARCHITECTURE NODE',
+        title: 'SisGo: Women-Only Safe Mobility Platform',
+        badge: 'PRODUCTION READY',
+        desc: 'Zero-knowledge transit security platform engineered with Python FastAPI, PostgreSQL Row Level Security (RLS), and automated 72-hour cryptographic shredding. Verified with 167 automated test suites.',
+        chips: ['Python FastAPI', 'PostgreSQL RLS', 'React Native', 'Supabase Auth', '167 Test Suites'],
+        actionType: 'project',
+        target: 'p-sisgo'
+      },
+      taybex: {
+        type: 'MULTI-TENANT AI INTELLIGENCE NODE',
+        title: 'TAYBEX: Multilingual AI Market Intelligence',
+        badge: 'LIVE PRODUCTION',
+        desc: 'Multi-tenant financial intelligence engine screening global equities across 8 Shariah compliance benchmarks. Features sub-120ms streaming LLM inference via Groq LPUs with native RTL Urdu & Arabic interfaces.',
+        chips: ['Groq LPU', 'Llama 3.2', 'FastAPI', 'Vite & Tailwind', 'RTL Typography', '8 Shariah Filters'],
+        actionType: 'project',
+        target: 'p-taybex'
+      },
+      tripmate: {
+        type: 'FINE-TUNED EDGE LLM NODE',
+        title: 'TripMate AI: Multimodal Tourism Engine',
+        badge: 'DEPLOYED PLATFORM',
+        desc: 'Autonomous travel itinerary engine powered by domain-fine-tuned Llama 3.2 3B using Unsloth 4-bit QLoRA. Delivers day-by-day geo-anchored travel schedules with interactive Mapbox maps.',
+        chips: ['Unsloth QLoRA', 'PyTorch', 'MongoDB', 'Express / Node', 'Stripe Billing', 'Mapbox GL'],
+        actionType: 'project',
+        target: 'p-tripmate'
+      },
+      phishing: {
+        type: 'EDGE DEFENSE & HEURISTICS NODE',
+        title: 'PhishingHunter: Edge Cyber Defence Engine',
+        badge: 'DEPLOYED API',
+        desc: 'Real-time anti-phishing heuristic analysis engine powered by Scikit-learn with 94.2% verified detection accuracy. Containerized with Docker and served via high-throughput Flask APIs.',
+        chips: ['Scikit-learn', 'Python', 'Docker', 'Render Cloud', 'Feature Extraction', '94.2% Accuracy'],
+        actionType: 'project',
+        target: 'p-phishing'
+      },
+      regalia: {
+        type: 'FULL-STACK COMMERCE ARCHITECTURE',
+        title: 'REGALIA: Luxury Bespoke Retail Atelier',
+        badge: 'LIVE DEPLOYED',
+        desc: 'High-performance bespoke retail web platform with atomic inventory management, cryptographic JWT auth, and Stripe webhook synchronization.',
+        chips: ['Node.js', 'Express', 'MongoDB Atlas', 'JWT Security', 'Stripe API', 'Tailwind CSS'],
+        actionType: 'project',
+        target: 'p-regalia'
+      },
+      oop: {
+        type: 'GAMIFIED MOBILE ARCHITECTURE',
+        title: 'OOP Master: Gamified CS Education App',
+        badge: 'MOBILE APP',
+        desc: 'Interactive gamified computer science education mobile application built with React Native Expo and Supabase, featuring offline quiz caching and algorithmic streak tracking.',
+        chips: ['React Native', 'Expo', 'Supabase', 'TypeScript', 'Gamification Engine'],
+        actionType: 'project',
+        target: 'p-oop'
+      },
+      'th-inc': {
+        type: 'ACCESSIBILITY & LOCALIZATION',
+        title: 'Bilingual Inclusion & RTL Typographic Engine',
+        badge: 'GLOBAL UX',
+        desc: 'First-class bidirectional layout switching supporting native Urdu, Arabic, and English font metrics with strict Zod validation schemas for cross-cultural audit trails.',
+        chips: ['Zod Validation', 'Bilingual Schema', 'RTL Layout Engine', 'Urdu Nastaliq', 'TypeScript'],
+        actionType: 'code',
+        target: 'zod'
+      },
+      'th-dp': {
+        type: 'SECURITY & GOVERNANCE',
+        title: 'Zero-Knowledge Privacy & PostgreSQL RLS',
+        badge: 'CYBERSECURITY',
+        desc: 'Tenant isolation at the database layer via PostgreSQL session RLS variables, backed by 72-hour auto-expiring ephemeral Redis sandboxes and zero unauthenticated data leaks.',
+        chips: ['PostgreSQL RLS', 'Supabase Security', '72h Auto-Shred', 'JWT Session Claims'],
+        actionType: 'code',
+        target: 'fastapi'
+      },
+      'th-ai': {
+        type: 'CROSS-CUTTING SUBSYSTEM',
+        title: 'Responsible AI & Fine-Tuned LLMs',
+        badge: 'AI INFRASTRUCTURE',
+        desc: 'Sub-120ms token streaming inference utilizing Groq LPUs, Unsloth 4-bit QLoRA adapter injection, and explainable multi-step rule evaluation pipelines across TAYBEX, TripMate, and PhishingHunter.',
+        chips: ['Groq LPU', 'Unsloth QLoRA', 'Llama 3.2', 'Prompt Guard', 'Multi-tenant LLM Gate'],
+        actionType: 'code',
+        target: 'lora'
+      },
+      'th-eng': {
+        type: 'DISTRIBUTED SERVICES',
+        title: 'High-Concurrency Asynchronous APIs',
+        badge: 'CLOUD BACKEND',
+        desc: 'High-throughput asynchronous Python FastAPI and Node.js microservices with rate-limiting, connection pooling, and sub-100ms P99 latency guarantees.',
+        chips: ['FastAPI Async', 'SQLAlchemy Pool', 'Pydantic V2', 'Docker Containers', 'Netlify Edge'],
+        actionType: 'code',
+        target: 'fastapi'
+      },
+      'th-civic': {
+        type: 'IMPACT ARCHITECTURE',
+        title: 'Civic Mobility & Real-Time Emergency Dispatch',
+        badge: 'UN SDG 5 & 11',
+        desc: 'Mission-critical urban safety network powering real-time SOS broadcasts, geofenced route tracking, and uncompromised driver identity verification.',
+        chips: ['Real-Time WebSockets', 'SOS Broadcast', 'Geofencing', 'Zero Data Retention'],
+        actionType: 'project',
+        target: 'p-sisgo'
+      }
+    };
+
+    function inspectMapNode(id) {
+      const data = MAP_TELEMETRY[id];
+      if (!data) return;
+
+      const typeEl = document.getElementById('hud-node-type');
+      const nameEl = document.getElementById('hud-node-name');
+      const badgeEl = document.getElementById('hud-node-badge');
+      const descEl = document.getElementById('hud-node-desc');
+      const chipsEl = document.getElementById('hud-node-chips');
+      const actionBtn = document.getElementById('hud-action-btn');
+
+      if (typeEl) typeEl.textContent = data.type;
+      if (nameEl) nameEl.textContent = data.title;
+      if (badgeEl) badgeEl.textContent = data.badge;
+      if (descEl) descEl.textContent = data.desc;
+      if (chipsEl) {
+        chipsEl.innerHTML = data.chips.map(function(c) {
+          return '<span class="tech-chip">' + escapeHtml(c) + '</span>';
+        }).join('');
+      }
+      if (actionBtn) {
+        actionBtn.setAttribute('onclick', 'handleHudActionClick(\'' + id + '\')');
+        const actionLabel = data.actionType === 'code' ? 'View Code Snippet' : 'Explore Case Study';
+        actionBtn.innerHTML = '<span>' + actionLabel + '</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+      }
+    }
+
+    function handleHudActionClick(nodeId) {
+      playTactileClick('click');
+      const data = MAP_TELEMETRY[nodeId] || MAP_TELEMETRY['sisgo'];
+      if (!data) return;
+      if (data.actionType === 'project') {
+        navigateToCard(data.target);
+      } else if (data.actionType === 'code') {
+        navigateToCode(data.target);
+      }
+    }
+
+    function filterMapSubsystem(category, btnEl) {
+      playTactileClick('click');
+      document.querySelectorAll('.map-subsystem-pill').forEach(function(p) {
+        p.classList.remove('active');
+      });
+      if (btnEl) btnEl.classList.add('active');
+
+      const wrapper = document.getElementById('systems-map-wrapper');
+      if (!wrapper) return;
+
+      const categoryMap = {
+        all: ['sisgo', 'taybex', 'tripmate', 'phishing', 'regalia', 'oop', 'th-inc', 'th-dp', 'th-ai', 'th-eng', 'th-civic'],
+        ai: ['taybex', 'tripmate', 'phishing', 'th-ai'],
+        security: ['sisgo', 'phishing', 'th-dp', 'th-civic'],
+        apis: ['sisgo', 'taybex', 'regalia', 'oop', 'th-eng']
+      };
+
+      const activeIds = categoryMap[category] || categoryMap.all;
+
+      if (category === 'all') {
+        wrapper.classList.remove('is-dimmed');
+        document.querySelectorAll('.map-node').forEach(function(n) { n.classList.remove('is-active'); });
+        document.querySelectorAll('.map-link').forEach(function(l) { l.classList.remove('is-active'); });
+        inspectMapNode('sisgo');
+        return;
+      }
+
+      wrapper.classList.add('is-dimmed');
+      document.querySelectorAll('.map-node').forEach(function(n) {
+        const id = n.dataset.id;
+        if (activeIds.indexOf(id) !== -1) {
+          n.classList.add('is-active');
+        } else {
+          n.classList.remove('is-active');
+        }
+      });
+
+      document.querySelectorAll('.map-link').forEach(function(l) {
+        const p = l.dataset.p;
+        const t = l.dataset.t;
+        if (activeIds.indexOf(p) !== -1 && (!t || activeIds.indexOf(t) !== -1)) {
+          l.classList.add('is-active');
+        } else {
+          l.classList.remove('is-active');
+        }
+      });
+
+      inspectMapNode(activeIds[0]);
+    }
+
+    function handleMapNodeClick(id) {
+      playTactileClick('click');
+      inspectMapNode(id);
+      if (['sisgo', 'taybex', 'tripmate', 'phishing', 'regalia', 'oop'].indexOf(id) !== -1) {
+        navigateToCard('p-' + id);
+      }
+    }
+
     (function renderSystemsMap() {
       const wrapper = document.getElementById('systems-map-wrapper');
       if (!wrapper) return;
-      const W = 920;
-      const H = 540;
+      const W = 960;
+      const H = 620;
       const cx = W / 2;
-      const cy = H / 2;
+      const cy = 300;
 
       const THEMES = [
         { id: 'th-inc', name: 'Inclusion & RTL', color: '#ff3a21' },
@@ -5172,12 +5547,12 @@ const ConsentSchema = z.object({
 
       PROJECT_IDS.forEach(function(pid, i) {
         const angle = (i * 2 * Math.PI) / PROJECT_IDS.length - Math.PI / 2;
-        pPos[pid] = [cx + 225 * Math.cos(angle), cy + 145 * Math.sin(angle)];
+        pPos[pid] = [cx + 230 * Math.cos(angle), cy + 150 * Math.sin(angle)];
       });
 
       THEMES.forEach(function(t, i) {
         const angle = (i * 2 * Math.PI) / THEMES.length - Math.PI / 2 + 0.35;
-        tPos[t.id] = [cx + 395 * Math.cos(angle), cy + 225 * Math.sin(angle)];
+        tPos[t.id] = [cx + 390 * Math.cos(angle), cy + 230 * Math.sin(angle)];
       });
 
       const connections = [
@@ -5218,7 +5593,7 @@ const ConsentSchema = z.object({
 
       THEMES.forEach(function(t) {
         svgNodes += 
-          '<g class="map-node" data-id="' + t.id + '" tabindex="0">' +
+          '<g class="map-node" data-id="' + t.id + '" tabindex="0" onclick="inspectMapNode(\'' + t.id + '\')">' +
             '<circle cx="' + tPos[t.id][0] + '" cy="' + tPos[t.id][1] + '" r="18" fill="var(--bg-alt)" stroke="' + t.color + '" stroke-width="2.5"/>' +
             '<text class="map-text" x="' + tPos[t.id][0] + '" y="' + (tPos[t.id][1] + 36) + '" style="fill:' + t.color + '; font-size:12px;">' + t.name + '</text>' +
           '</g>';
@@ -5226,9 +5601,17 @@ const ConsentSchema = z.object({
 
       wrapper.innerHTML = 
         '<svg viewBox="0 0 ' + W + ' ' + H + '">' +
+          '<defs>' +
+            '<radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">' +
+              '<stop offset="0%" stop-color="#38bdf8"/>' +
+              '<stop offset="100%" stop-color="#0284c7"/>' +
+            '</radialGradient>' +
+          '</defs>' +
+          '<ellipse cx="' + cx + '" cy="' + cy + '" rx="230" ry="150" fill="none" stroke="rgba(56,189,248,0.12)" stroke-width="1.2" stroke-dasharray="4 6"/>' +
+          '<ellipse cx="' + cx + '" cy="' + cy + '" rx="390" ry="230" fill="none" stroke="rgba(16,185,129,0.1)" stroke-width="1.2" stroke-dasharray="4 6"/>' +
           svgLines +
-          '<circle cx="' + cx + '" cy="' + cy + '" r="40" fill="var(--pri)" stroke="var(--fg-title)" stroke-width="2"/>' +
-          '<text class="map-text" x="' + cx + '" y="' + (cy + 5) + '" style="fill:#ffffff; font-weight:800; font-size:13px;">Mustafa</text>' +
+          '<circle cx="' + cx + '" cy="' + cy + '" r="38" fill="url(#hubGrad)" stroke="#38bdf8" stroke-width="2.5" filter="drop-shadow(0 0 16px rgba(2,132,199,0.5))"/>' +
+          '<text class="map-text" x="' + cx + '" y="' + (cy + 5) + '" style="fill:#ffffff; font-weight:800; font-size:13.5px; letter-spacing:0.02em;">Mustafa</text>' +
           svgNodes +
         '</svg>';
 
@@ -5247,6 +5630,8 @@ const ConsentSchema = z.object({
               if (partnerNode) partnerNode.classList.add('is-active');
             }
           });
+
+          inspectMapNode(id);
         });
 
         node.addEventListener('mouseleave', function() {
@@ -5259,16 +5644,10 @@ const ConsentSchema = z.object({
           });
         });
       });
-    })();
 
-    function handleMapNodeClick(projectId) {
-      playTactileClick('click');
-      const targetCard = document.getElementById('p-' + projectId);
-      if (targetCard) {
-        document.querySelectorAll('#project-filters button')[0].click();
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
+      // Default HUD state to SisGo
+      inspectMapNode('sisgo');
+    })();
 
     // WEB3FORMS SUBMISSION
     async function handleWeb3FormSubmit(e) {
@@ -5412,139 +5791,6 @@ const ConsentSchema = z.object({
     }
 
     /* --------------------------------------------------------------------------
-       ENHANCEMENT 3: LIVE REQUEST FLOW SIMULATOR ENGINE
-       -------------------------------------------------------------------------- */
-    let simInterval = null;
-    let simStage = 0;
-
-    function triggerRequestSimulator(projectId) {
-      playTactileClick('click');
-      const simSection = document.getElementById('pipeline-simulator');
-      if (simSection) {
-        simSection.scrollIntoView({ behavior: 'smooth' });
-      }
-      setTimeout(function() {
-        startRequestSimulation();
-      }, 450);
-    }
-
-    function startRequestSimulation() {
-      playTactileClick('click');
-      const btn = document.getElementById('btn-run-sim');
-      const statusLbl = document.getElementById('sim-status-label');
-      const logs = document.getElementById('sim-term-logs');
-      if (!btn || !logs) return;
-
-      btn.disabled = true;
-      btn.innerHTML = '<span class="pulse-dot"></span><span>Simulating Pipeline...</span>';
-      statusLbl.textContent = 'SIMULATION RUNNING...';
-      statusLbl.style.color = '#38bdf8';
-
-      logs.innerHTML = '';
-      simStage = 0;
-      clearInterval(simInterval);
-
-      const stages = [
-        {
-          id: 1,
-          name: 'Client Device',
-          time: '00.012ms',
-          log: 'Mobile client constructs signed request: { auth: "Bearer jwt_sig_89f", otp: "94821", location: [24.86, 67.00] }'
-        },
-        {
-          id: 2,
-          name: 'FastAPI Gateway',
-          time: '00.034ms',
-          log: 'FastAPI Gateway: Rate limit OK (12/100 req/min). Cryptographic HMAC-SHA256 signature verified.'
-        },
-        {
-          id: 3,
-          name: 'PostgreSQL RLS',
-          time: '00.061ms',
-          log: 'Database Security: Session context set to auth.uid(). Row Level Security filters rows to user_id strictly.'
-        },
-        {
-          id: 4,
-          name: '72h Auto-Shred',
-          time: '00.078ms',
-          log: 'Privacy Layer: Ephemeral telemetry queued in Redis TTL buffer (expires in exactly 72h). Hard shredding primed.'
-        },
-        {
-          id: 5,
-          name: 'Success 200 OK',
-          time: '00.094ms',
-          log: 'HTTP 200 OK dispatched to client. Audit hash logged to dual-custodian ledger. Roundtrip latency: 94ms.'
-        }
-      ];
-
-      simInterval = setInterval(function() {
-        if (simStage < stages.length) {
-          const s = stages[simStage];
-          simStage++;
-
-          // Highlight stage cards
-          document.querySelectorAll('.pipeline-stage').forEach(function(el) {
-            el.classList.remove('stage-active');
-          });
-          const stageEl = document.getElementById('p-stage-1');
-          for (let i = 1; i <= s.id; i++) {
-            const el = document.getElementById('p-stage-' + i);
-            if (el) {
-              el.classList.add(i === s.id ? 'stage-active' : 'stage-done');
-            }
-          }
-
-          // Append log
-          const line = document.createElement('div');
-          line.className = 'sim-log-line';
-          line.innerHTML = '<span class="sim-time">[' + s.time + ']</span><span class="sim-ok">STAGE 0' + s.id + ':</span><span>' + s.log + '</span>';
-          logs.appendChild(line);
-          logs.scrollTop = logs.scrollHeight;
-          playTactileClick('click');
-        } else {
-          clearInterval(simInterval);
-          btn.disabled = false;
-          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span>Simulate Again</span>';
-          statusLbl.textContent = 'PIPELINE COMPLETE (94ms)';
-          statusLbl.style.color = '#10b981';
-          playTactileClick('success');
-          showToast('Request Flow Simulation Completed in 94ms!', '✅');
-        }
-      }, 700);
-    }
-
-    function resetRequestSimulation() {
-      playTactileClick('click');
-      clearInterval(simInterval);
-      document.querySelectorAll('.pipeline-stage').forEach(function(el) {
-        el.classList.remove('stage-active', 'stage-done');
-      });
-      const btn = document.getElementById('btn-run-sim');
-      if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span>Simulate End-to-End Request</span>';
-      }
-      const statusLbl = document.getElementById('sim-status-label');
-      if (statusLbl) {
-        statusLbl.textContent = 'READY FOR SIMULATION';
-        statusLbl.style.color = '#10b981';
-      }
-      const logs = document.getElementById('sim-term-logs');
-      if (logs) {
-        logs.innerHTML = '<div class="sim-log-line"><span class="sim-time">[00.000ms]</span><span class="sim-ok">SYS:</span><span>Simulator reset. Ready for dispatch.</span></div>';
-      }
-    }
-
-    function selectSimStage(stageNum) {
-      playTactileClick('click');
-      document.querySelectorAll('.pipeline-stage').forEach(function(el) {
-        el.classList.remove('stage-active');
-      });
-      const target = document.getElementById('p-stage-' + stageNum);
-      if (target) target.classList.add('stage-active');
-    }
-
-    /* --------------------------------------------------------------------------
        ENHANCEMENT 4: INTERACTIVE LIVE CODE SHOWCASE ENGINE
        -------------------------------------------------------------------------- */
     const CODE_SNIPPETS = {
@@ -5654,18 +5900,26 @@ const ConsentSchema = z.object({
     let activeSnippetKey = 'fastapi';
 
     function switchCodeSnippet(key, btnEl) {
-      playTactileClick('click');
+      try {
+        if (typeof playTactileClick === 'function') playTactileClick('click');
+      } catch (e) {}
+
       activeSnippetKey = key;
       const data = CODE_SNIPPETS[key];
       if (!data) return;
 
+      // Update active classes across all tab buttons
       document.querySelectorAll('.ide-tab').forEach(function(t) {
-        t.classList.remove('active');
+        if (t.getAttribute('data-snippet') === key) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
       });
-      if (btnEl) btnEl.classList.add('active');
 
       renderCodeContainer(data);
-      document.getElementById('ide-rationale-text').textContent = data.rationale;
+      const ratEl = document.getElementById('ide-rationale-text');
+      if (ratEl) ratEl.textContent = data.rationale;
     }
 
     function renderCodeContainer(data) {
@@ -5680,7 +5934,6 @@ const ConsentSchema = z.object({
     }
 
     function copyActiveCodeSnippet() {
-      playTactileClick('click');
       const data = CODE_SNIPPETS[activeSnippetKey];
       if (!data) return;
 
@@ -5691,232 +5944,644 @@ const ConsentSchema = z.object({
         return tmp.textContent || tmp.innerText || '';
       }).join('\n');
 
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(rawText);
-        showToast('Code copied to clipboard: ' + data.file, '📋');
-        const btnText = document.getElementById('copy-code-text');
-        if (btnText) {
-          btnText.textContent = 'Copied!';
-          setTimeout(function() { btnText.textContent = 'Copy Snippet'; }, 2000);
-        }
+      copyToClipboard(rawText, 'Copied ' + data.file + ' to clipboard!');
+      const btnText = document.getElementById('copy-code-text');
+      if (btnText) {
+        btnText.textContent = '✓ Copied!';
+        setTimeout(function() {
+          btnText.textContent = 'Copy Snippet';
+        }, 2200);
       }
     }
 
     /* --------------------------------------------------------------------------
-       ENHANCEMENT 5: ⌘K COMMAND PALETTE (SPOTLIGHT SEARCH)
+       ENHANCEMENT 5: UNIFIED INFALLIBLE SEARCH ENGINE & GLOBAL ACTIONS
        -------------------------------------------------------------------------- */
+    function triggerDownloadCV() {
+      playTactileClick('success');
+      const a = document.createElement('a');
+      a.href = 'Mustafa_Moin_CV.pdf';
+      a.download = 'Mustafa_Moin_CV.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast('Downloading Official CV (PDF)...', '📄');
+    }
+
+    function navigateToCode(key) {
+      scrollToSection('code-showcase');
+      if (typeof switchCodeSnippet === 'function') {
+        switchCodeSnippet(key);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
     const CMD_ITEMS = [
-      { id: 'p-sisgo', title: 'SisGo: Privacy-First Safe Mobility', cat: 'Project', icon: '🛡️', keywords: 'sisgo women mobility safe react native expo fastapi python postgresql supabase rls 72h shred privacy', action: function() { navigateToCard('p-sisgo'); } },
-      { id: 'p-taybex', title: 'TAYBEX: Multilingual AI Market Intelligence', cat: 'Project', icon: '📈', keywords: 'taybex shariah finance stock market crypto groq gemini llm multi-tenant fastapi vite tailwind rtl live', action: function() { navigateToCard('p-taybex'); } },
-      { id: 'p-tripmate', title: 'TripMate AI: Multimodal Tourism Engine', cat: 'Project', icon: '🧭', keywords: 'tripmate travel itinerary ai lora unsloth llama groq mongodb stripe express react', action: function() { navigateToCard('p-tripmate'); } },
-      { id: 'p-phishing', title: 'PhishingHunter: Edge Cyber Defence', cat: 'Project', icon: '🔒', keywords: 'phishing threat cyber security ml machine learning python flask scikit-learn render docker', action: function() { navigateToCard('p-phishing'); } },
-      { id: 'p-regalia', title: 'REGALIA: Luxury Bespoke Atelier', cat: 'Project', icon: '✨', keywords: 'regalia ecommerce retail fashion node express mongodb jwt api luxury store', action: function() { navigateToCard('p-regalia'); } },
-      { id: 'p-oop', title: 'OOP Master: Interactive Gamified App', cat: 'Project', icon: '📱', keywords: 'oop master c++ gamified education quiz react native expo supabase learning', action: function() { navigateToCard('p-oop'); } },
-      { id: 'act-sim', title: 'Simulate Request Flow (Interactive Pipeline)', cat: 'System', icon: '⚡', keywords: 'simulator live request architecture telemetry jwt otp rls fastapi postgresql shred pipeline test', action: function() { triggerRequestSimulator('sisgo'); } },
-      { id: 'act-code', title: 'View Live Code Showcase (FastAPI / LoRA)', cat: 'System', icon: '💻', keywords: 'code snippet showcase ide editor syntax highlight fastapi rls lora unsloth zod schema python', action: function() { scrollToSection('code-showcase'); } },
-      { id: 'act-cv', title: 'Download Mustafa Moin\'s CV (PDF)', cat: 'Action', icon: '📄', keywords: 'cv resume curriculum vitae download pdf hire profile contact engineer', action: function() { window.open('Mustafa_Moin_CV.pdf', '_blank'); } },
-      { id: 'act-contact', title: 'Send Direct Message (Web3Forms)', cat: 'Action', icon: '💌', keywords: 'contact message email hire recruit web3forms send inquiry form get in touch', action: function() { scrollToSection('contact'); } },
-      { id: 'act-fastmode', title: 'Toggle Recruiter Fast Mode (60s Summary)', cat: 'Action', icon: '⚡', keywords: 'recruiter fast mode 60s summary executive overview key metrics quick speed decision', action: function() { toggleRecruiterMode(); } },
-      { id: 'act-theme', title: 'Toggle Dark / Light Theme', cat: 'Action', icon: '🌓', keywords: 'theme toggle dark light mode color cosmic blue day night', action: function() { document.getElementById('theme-toggle').click(); } },
-      { id: 'sec-sdgs', title: 'UN Sustainable Development Goals (SDGs)', cat: 'Section', icon: '🌐', keywords: 'un sdgs sustainable development goals impact civic social gender equality cities', action: function() { scrollToSection('sdgs'); } },
-      { id: 'sec-privacy', title: 'SisGo Privacy Sandbox & Ephemeral TTL', cat: 'Section', icon: '🛡️', keywords: 'privacy sandbox zero-knowledge rls 72 hour shred security vault ttl', action: function() { scrollToSection('privacy'); } },
-      { id: 'sec-map', title: 'Interactive System Architecture Map', cat: 'Section', icon: '🗺️', keywords: 'system architecture map graph network distributed services microservices', action: function() { scrollToSection('map'); } },
-      { id: 'sec-skills', title: 'Engineering Competencies & Tech Matrix', cat: 'Section', icon: '⚙️', keywords: 'skills competencies tech matrix stack languages frameworks databases devops', action: function() { scrollToSection('skills'); } }
+      // 1. Production Projects
+      { id: 'p-sisgo', title: 'SisGo: Women-Only Safe Mobility Platform', cat: 'Project', icon: '🛡️', keywords: 'sisgo women mobility safe taxi transit ride hailing react native expo fastapi python postgresql supabase rls 72h shred privacy zero knowledge otp jwt 162 endpoints projects work portfolio applications systems', action: function() { navigateToCard('p-sisgo'); } },
+      { id: 'p-taybex', title: 'TAYBEX: Multilingual AI Market Intelligence', cat: 'Project', icon: '📈', keywords: 'taybex shariah finance stock market crypto trading groq gemini llm multi-tenant fastapi vite tailwind rtl urdu arabic chinese spanish french live stream projects work portfolio applications systems', action: function() { navigateToCard('p-taybex'); } },
+      { id: 'p-tripmate', title: 'TripMate AI: Multimodal Tourism Engine', cat: 'Project', icon: '🧭', keywords: 'tripmate travel tourism itinerary ai lora unsloth fine-tuning llama groq mongodb stripe express react booking multi-day projects work portfolio applications systems', action: function() { navigateToCard('p-tripmate'); } },
+      { id: 'p-phishing', title: 'PhishingHunter: Edge Cyber Defence Engine', cat: 'Project', icon: '🔒', keywords: 'phishing threat detection cyber security machine learning ml scikit-learn python flask docker render 94% accuracy heuristics projects work portfolio applications systems', action: function() { navigateToCard('p-phishing'); } },
+      { id: 'p-regalia', title: 'REGALIA: Luxury Bespoke Retail Atelier', cat: 'Project', icon: '✨', keywords: 'regalia ecommerce retail fashion clothing store bespoke luxury node express mongodb jwt api orders cart wishlist stripe projects work portfolio applications systems', action: function() { navigateToCard('p-regalia'); } },
+      { id: 'p-oop', title: 'OOP Master: Gamified CS Education App', cat: 'Project', icon: '📱', keywords: 'oop master c++ gamified education quiz react native expo supabase gamification learning algorithms computer science projects work portfolio applications systems', action: function() { navigateToCard('p-oop'); } },
+
+      // 2. CV & Resume & Profile
+      {
+        id: 'act-cv-prev',
+        title: "Mustafa Moin CV & Professional Summary",
+        cat: 'CV / Resume',
+        icon: '📄',
+        keywords: 'cv resume curriculum vitae qualifications summary experience education background mustafa moin indus university b.s. computer science developer hire indus karachi download pdf offline review',
+        action: function() {
+          scrollToSection('experience');
+          openCVPreview();
+        }
+      },
+      {
+        id: 'act-cv-dl',
+        title: "Download Official CV (Mustafa_Moin_CV.pdf)",
+        cat: 'CV / Resume',
+        icon: '📥',
+        keywords: 'cv resume curriculum vitae download pdf offline copy hire profile contact engineer 2026 mustafa moin summary qualifications credentials indus university',
+        action: function() {
+          scrollToSection('experience');
+          triggerDownloadCV();
+          openCVPreview();
+        }
+      },
+      {
+        id: 'act-about',
+        title: 'About Mustafa Moin (Bio & Background)',
+        cat: 'Profile',
+        icon: '👨‍💻',
+        keywords: 'mustafa moin about whoami bio engineer developer karachi pakistan full stack ai systems architect experience background',
+        action: function() { scrollToSection('hero'); }
+      },
+      {
+        id: 'act-edu',
+        title: 'Education: B.S. Computer Science · Indus University (2026)',
+        cat: 'Profile',
+        icon: '🎓',
+        keywords: 'education university degree indus karachi bs computer science b.s. cs 2026 academic distributed systems ai cv resume credentials qualifications',
+        action: function() { scrollToSection('experience'); }
+      },
+
+      // 3. Interactive Code & Architecture Map
+      { id: 'act-code-fastapi', title: 'Code Showcase: FastAPI & PostgreSQL RLS', cat: 'Code', icon: '💻', keywords: 'code fastapi dependency injection postgresql rls security tenant session auth_rls_dependency.py python syntax ide backend microservices', action: function() { navigateToCode('fastapi'); } },
+      { id: 'act-code-lora', title: 'Code Showcase: LoRA Fine-Tuning Pipeline', cat: 'Code', icon: '🧠', keywords: 'code lora fine-tuning unsloth pytorch llama-3 travel domain dataset lora_train_pipeline.py python ide artificial intelligence ml', action: function() { navigateToCode('lora'); } },
+      { id: 'act-code-zod', title: 'Code Showcase: Bilingual Consent Zod Schema', cat: 'Code', icon: '📝', keywords: 'code zod schema typescript validation bilingual rtl urdu english consent_audit_schema.ts ide security privacy', action: function() { navigateToCode('zod'); } },
+      { id: 'sec-map', title: 'Systems Connection Network (Architecture Graph)', cat: 'System', icon: '🗺️', keywords: 'system architecture map graph network distributed services microservices nodes topology systems engineering', action: function() { scrollToSection('map'); } },
+
+      // 4. Privacy, Security & SDGs
+      { id: 'sec-privacy', title: 'SisGo: Privacy-by-Design & 72h Shredding Sandbox', cat: 'Security', icon: '🛡️', keywords: 'privacy sandbox zero-knowledge rls 72 hour shred security vault ttl ephemeral auto purge redis gdpr compliance', action: function() { scrollToSection('privacy'); } },
+      { id: 'sec-sdgs', title: 'UN Sustainable Development Goals (SDGs Matrix)', cat: 'Impact', icon: '🌐', keywords: 'un sdgs sdg sustainable development goals impact civic social gender equality cities global matrix un impact', action: function() { scrollToSection('sdgs'); } },
+      { id: 'sdg-5', title: 'SDG 5: Gender Equality (SisGo Safe Mobility)', cat: 'Impact', icon: '♀️', keywords: 'sdg sdgs 5 gender equality women safety transit mobility sisgo female empowerment civic', action: function() { filterBySDG(5); } },
+      { id: 'sdg-8', title: 'SDG 8: Decent Work & Economic Growth (TAYBEX, TripMate)', cat: 'Impact', icon: '💼', keywords: 'sdg sdgs 8 economic growth work finance tourism taybex tripmate regalia jobs', action: function() { filterBySDG(8); } },
+      { id: 'sdg-9', title: 'SDG 9: Industry, Innovation & Infrastructure (APIs & LLM)', cat: 'Impact', icon: '🏗️', keywords: 'sdg sdgs 9 innovation infrastructure apis llm microservices cyber defense cloud', action: function() { filterBySDG(9); } },
+      { id: 'sdg-11', title: 'SDG 11: Sustainable Cities & Communities', cat: 'Impact', icon: '🏙️', keywords: 'sdg sdgs 11 sustainable cities urban communities transit safe mobility transport transit safety', action: function() { filterBySDG(11); } },
+      { id: 'sdg-16', title: 'SDG 16: Peace, Justice & Strong Institutions (Security & RLS)', cat: 'Impact', icon: '⚖️', keywords: 'sdg sdgs 16 peace justice institutions phishing cyber defense privacy shred security', action: function() { filterBySDG(16); } },
+
+      // 5. Competencies & Tech Stack
+      { id: 'sec-skills', title: 'Engineering Competencies & Tech Matrix', cat: 'Skills', icon: '⚙️', keywords: 'skills competencies tech matrix stack languages frameworks databases devops frontend backend cloud', action: function() { scrollToSection('skills'); } },
+      { id: 'skill-python', title: 'Python & FastAPI Backend Stack', cat: 'Skills', icon: '🐍', keywords: 'python fastapi pydantic sqlalchemy async rest api microservices backend database', action: function() { scrollToSection('skills'); } },
+      { id: 'skill-react', title: 'React, React Native & Mobile Apps', cat: 'Skills', icon: '⚛️', keywords: 'react react native expo mobile frontend typescript javascript ui vite nextjs', action: function() { scrollToSection('skills'); } },
+      { id: 'skill-db', title: 'Databases: PostgreSQL, Supabase & MongoDB', cat: 'Skills', icon: '🗄️', keywords: 'database postgresql supabase mongodb redis sql rls row level security indexing storage', action: function() { scrollToSection('skills'); } },
+      { id: 'skill-ai', title: 'AI & LLMs: LoRA, Unsloth, Groq & Gemini', cat: 'Skills', icon: '🤖', keywords: 'ai llm large language models lora unsloth groq gemini fine-tuning prompt engineering machine learning ml', action: function() { scrollToSection('skills'); } },
+
+      // 6. Contact & Direct Communication
+      { id: 'act-email', title: 'Copy Direct Email: mustafamoin061@gmail.com', cat: 'Contact', icon: '✉️', keywords: 'email direct mail contact mustafamoin061@gmail.com write send hire reach out message', action: function() { scrollToSection('contact'); copyToClipboard('mustafamoin061@gmail.com', 'Email copied to clipboard: mustafamoin061@gmail.com'); } },
+      { id: 'act-phone', title: 'Copy Phone / WhatsApp: +92 343 3083198', cat: 'Contact', icon: '📞', keywords: 'phone whatsapp call message +923433083198 contact mobile number direct reach out', action: function() { scrollToSection('contact'); copyToClipboard('+923433083198', 'Phone number copied to clipboard: +92 343 3083198'); } },
+      { id: 'act-contact', title: 'Send Direct Message (Web3Forms)', cat: 'Contact', icon: '💌', keywords: 'contact message email hire recruit web3forms send inquiry form get in touch reach out collaboration', action: function() { scrollToSection('contact'); } },
+      { id: 'act-linkedin', title: 'Visit LinkedIn Profile (linkedin.com/in/mustafamoin)', cat: 'Social', icon: '🔗', keywords: 'linkedin social connect network profile hire recruiter connect professional', action: function() { window.open('https://linkedin.com/in/mustafamoin', '_blank'); } },
+      { id: 'act-github', title: 'Visit GitHub Repositories (github.com/MustafaMoin)', cat: 'Social', icon: '🐙', keywords: 'github open source git code repositories commits profile projects open-source', action: function() { window.open('https://github.com/MustafaMoin', '_blank'); } },
+
+      // 7. System Controls & Modes
+      { id: 'act-theme', title: 'Toggle Dark / Light Theme Mode', cat: 'Settings', icon: '🌓', keywords: 'theme toggle dark light mode color cosmic deep blue daylight bright', action: function() { const t = document.getElementById('theme-toggle'); if (t) t.click(); } },
+      { id: 'act-sound', title: 'Toggle Tactile Audio Sound Effects', cat: 'Settings', icon: '🔊', keywords: 'sound audio mute tactile click effects volume toggle bleep audio-fx', action: function() { const s = document.getElementById('sound-toggle'); if (s) s.click(); } }
     ];
 
     let cmdSelectedIndex = 0;
     let filteredCmdItems = CMD_ITEMS.slice();
 
-    function openCmdPalette() {
-      playTactileClick('click');
-      const backdrop = document.getElementById('cmd-palette-backdrop');
-      const input = document.getElementById('cmd-palette-input');
-      if (!backdrop) return;
-
-      backdrop.classList.add('open');
-      backdrop.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      if (input) {
-        input.value = '';
-        cmdSelectedIndex = 0;
-        filterCmdItems('');
-        setTimeout(function() {
-          try { input.focus(); } catch (err) {}
-        }, 60);
-      }
-    }
-
-    function closeCmdPalette() {
-      playTactileClick('click');
-      const backdrop = document.getElementById('cmd-palette-backdrop');
-      if (!backdrop) return;
-      backdrop.classList.remove('open');
-      backdrop.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-
-    function closeCmdPaletteOnBackdrop(e) {
-      const backdrop = document.getElementById('cmd-palette-backdrop');
-      if (e.target === backdrop) {
-        closeCmdPalette();
-      }
-    }
-
-    function filterCmdItems(query) {
+    function searchFilter(query) {
       const q = (query || '').toLowerCase().trim();
-      if (!q) {
-        filteredCmdItems = CMD_ITEMS.slice();
-      } else {
-        filteredCmdItems = CMD_ITEMS.filter(function(item) {
-          const matchTitle = item.title.toLowerCase().includes(q);
-          const matchCat = item.cat.toLowerCase().includes(q);
-          const matchKeys = item.keywords ? item.keywords.toLowerCase().includes(q) : false;
-          return matchTitle || matchCat || matchKeys;
+      if (!q) return CMD_ITEMS.slice();
+
+      let normalizedQ = q
+        .replace(/\b(sdgs|sdg)\b/g, 'sdg')
+        .replace(/\b(cv|resume|curriculum vitae)\b/g, 'cv')
+        .replace(/\b(phone|whatsapp|call|cell)\b/g, 'phone')
+        .replace(/\b(fast\s*api)\b/g, 'fastapi')
+        .replace(/\b(react\s*native)\b/g, 'react native')
+        .replace(/\b(ai|llm|artificial intelligence|ml)\b/g, 'ai');
+
+      const terms = normalizedQ.split(/\s+/).filter(Boolean);
+
+      const scored = [];
+      CMD_ITEMS.forEach(function(item) {
+        const titleL = item.title.toLowerCase();
+        const catL = item.cat.toLowerCase();
+        const keyL = (item.keywords || '').toLowerCase();
+        const haystack = titleL + ' ' + catL + ' ' + keyL;
+
+        const matchesAll = terms.every(function(t) {
+          if (haystack.indexOf(t) !== -1) return true;
+          if (t.endsWith('s') && t.length > 2 && haystack.indexOf(t.slice(0, -1)) !== -1) return true;
+          if (!t.endsWith('s') && haystack.indexOf(t + 's') !== -1) return true;
+          return false;
         });
-      }
-      cmdSelectedIndex = 0;
-      renderCmdResults();
+
+        if (matchesAll) {
+          let score = 0;
+          if (titleL.indexOf(q) !== -1) score += 60;
+          if (titleL.startsWith(q)) score += 40;
+          if (catL.indexOf(q) !== -1) score += 25;
+          if (keyL.indexOf(q) !== -1) score += 15;
+          scored.push({ item: item, score: score });
+        }
+      });
+
+      scored.sort(function(a, b) { return b.score - a.score; });
+      return scored.map(function(s) { return s.item; });
     }
 
-    function renderCmdResults() {
-      const list = document.getElementById('cmd-results-list');
-      if (!list) return;
+    /* --- Unified Infallible Search Engine --- */
+    function submitNavSearch(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const input = document.getElementById('nav-search-input');
+      const q = input ? input.value.trim() : '';
+      const dropdown = document.getElementById('nav-search-dropdown');
 
-      if (filteredCmdItems.length === 0) {
-        list.innerHTML = '<div style="padding:22px; text-align:center; color:#64748b; font-family:var(--font-mono); font-size:13px;">No commands or projects match your query.</div>';
+      if (!q) {
+        focusNavSearch();
         return;
       }
 
-      let htmlStr = '';
-      filteredCmdItems.forEach(function(item, idx) {
-        const isSel = idx === cmdSelectedIndex ? ' selected' : '';
-        htmlStr += '<div class="cmd-item' + isSel + '" onclick="executeCmdItem(' + idx + ')">';
-        htmlStr += '  <div class="cmd-item-left"><span>' + item.icon + '</span><strong>' + item.title + '</strong></div>';
-        htmlStr += '  <span class="cmd-category-tag">' + item.cat + '</span>';
-        htmlStr += '</div>';
-      });
-      list.innerHTML = htmlStr;
+      // Blur input immediately so browser focus lock is released for smooth scrolling
+      if (input) input.blur();
 
-      // Scroll selected into view
-      try {
-        const selectedEl = list.querySelectorAll('.cmd-item')[cmdSelectedIndex];
-        if (selectedEl) {
-          selectedEl.scrollIntoView({ block: 'nearest' });
-        }
-      } catch (err) {}
+      filteredCmdItems = searchFilter(q);
+      cmdSelectedIndex = 0;
+
+      if (filteredCmdItems.length > 0) {
+        executeNavSearchItem(0);
+        return;
+      }
+
+      // Direct fallback matching for any query (SDGs, CV, code snippets, projects, sections)
+      const lowerQ = q.toLowerCase();
+      if (lowerQ.includes('sdg')) {
+        closeNavSearchDropdown();
+        scrollToSection('sdgs');
+        showToast('Navigating to UN SDGs Matrix', '🌐');
+        return;
+      }
+      if (lowerQ.includes('cv') || lowerQ.includes('resume')) {
+        closeNavSearchDropdown();
+        scrollToSection('experience');
+        openCVPreview();
+        showToast('Opening Mustafa Moin CV...', '📄');
+        return;
+      }
+      if (lowerQ.includes('code') || lowerQ.includes('snippet') || lowerQ.includes('fastapi') || lowerQ.includes('lora') || lowerQ.includes('zod')) {
+        closeNavSearchDropdown();
+        scrollToSection('code-showcase');
+        if (lowerQ.includes('lora')) switchCodeSnippet('lora');
+        else if (lowerQ.includes('zod')) switchCodeSnippet('zod');
+        else switchCodeSnippet('fastapi');
+        showToast('Navigating to Code Showcase', '💻');
+        return;
+      }
+      if (lowerQ.includes('contact') || lowerQ.includes('email') || lowerQ.includes('phone') || lowerQ.includes('hire')) {
+        closeNavSearchDropdown();
+        scrollToSection('contact');
+        showToast('Navigating to Contact Section', '✉️');
+        return;
+      }
+      if (lowerQ.includes('skill') || lowerQ.includes('tech') || lowerQ.includes('stack')) {
+        closeNavSearchDropdown();
+        scrollToSection('skills');
+        showToast('Navigating to Engineering Skills', '⚙️');
+        return;
+      }
+      if (lowerQ.includes('privacy') || lowerQ.includes('security') || lowerQ.includes('shred')) {
+        closeNavSearchDropdown();
+        scrollToSection('privacy');
+        showToast('Navigating to Privacy Architecture', '🛡️');
+        return;
+      }
+      if (lowerQ.includes('map') || lowerQ.includes('system') || lowerQ.includes('network')) {
+        closeNavSearchDropdown();
+        scrollToSection('map');
+        showToast('Navigating to Systems Network', '🗺️');
+        return;
+      }
+      if (lowerQ.includes('sisgo') || lowerQ.includes('women') || lowerQ.includes('transit')) {
+        closeNavSearchDropdown();
+        navigateToCard('p-sisgo');
+        return;
+      }
+      if (lowerQ.includes('taybex') || lowerQ.includes('stock') || lowerQ.includes('shariah')) {
+        closeNavSearchDropdown();
+        navigateToCard('p-taybex');
+        return;
+      }
+      if (lowerQ.includes('tripmate') || lowerQ.includes('travel') || lowerQ.includes('tourism')) {
+        closeNavSearchDropdown();
+        navigateToCard('p-tripmate');
+        return;
+      }
+      if (lowerQ.includes('phishing') || lowerQ.includes('threat') || lowerQ.includes('cyber')) {
+        closeNavSearchDropdown();
+        navigateToCard('p-phishing');
+        return;
+      }
+      if (lowerQ.includes('regalia') || lowerQ.includes('retail') || lowerQ.includes('fashion')) {
+        closeNavSearchDropdown();
+        navigateToCard('p-regalia');
+        return;
+      }
+      if (lowerQ.includes('oop') || lowerQ.includes('education') || lowerQ.includes('quiz')) {
+        closeNavSearchDropdown();
+        navigateToCard('p-oop');
+        return;
+      }
+
+      if (dropdown) {
+        renderNavDropdownResults(dropdown, q);
+        dropdown.style.display = 'block';
+        playTactileClick('click');
+        showToast('No matching items for "' + q + '"', 'ℹ️');
+      }
+    }
+
+    function openCmdPalette() {
+      focusNavSearch();
+    }
+
+    function closeCmdPalette() {
+      closeNavSearchDropdown();
+    }
+
+    function closeCmdPaletteOnBackdrop() {
+      closeNavSearchDropdown();
+    }
+
+    function filterCmdItems(query) {
+      handleNavSearchInput(query);
     }
 
     function executeCmdItem(idx) {
+      executeNavSearchItem(idx);
+    }
+
+    /* --- Navbar Interactive Search Bar & Floating Dropdown Engine --- */
+    function focusNavSearch() {
+      const input = document.getElementById('nav-search-input');
+      if (input) {
+        input.focus();
+        handleNavSearchFocus();
+      }
+    }
+
+    function handleNavSearchFocus() {
+      const input = document.getElementById('nav-search-input');
+      const dropdown = document.getElementById('nav-search-dropdown');
+      if (!dropdown) return;
+      const q = input ? input.value.trim() : '';
+      if (q.length > 0) {
+        handleNavSearchInput(q);
+      } else {
+        renderNavQuickSuggestions(dropdown);
+      }
+    }
+
+    function handleNavSearchInput(val) {
+      const dropdown = document.getElementById('nav-search-dropdown');
+      const clearBtn = document.getElementById('nav-search-clear');
+      if (!dropdown) return;
+
+      const q = (val || '').trim();
+      if (clearBtn) {
+        clearBtn.style.display = q.length > 0 ? 'flex' : 'none';
+      }
+
+      if (!q) {
+        renderNavQuickSuggestions(dropdown);
+        return;
+      }
+
+      filteredCmdItems = searchFilter(q);
+      cmdSelectedIndex = 0;
+      renderNavDropdownResults(dropdown, q);
+    }
+
+    function renderNavQuickSuggestions(dropdown, selectedIdx) {
+      const quickIds = ['p-sisgo', 'p-taybex', 'p-tripmate', 'act-cv-prev', 'act-code-fastapi', 'sec-sdgs', 'sec-map', 'act-contact'];
+      filteredCmdItems = CMD_ITEMS.filter(function(it) {
+        return quickIds.indexOf(it.id) !== -1;
+      });
+      cmdSelectedIndex = typeof selectedIdx === 'number' ? selectedIdx : 0;
+
+      let html = '<div class="nav-search-header">';
+      html += '  <span>⚡ QUICK NAVIGATION &amp; POPULAR LINKS</span>';
+      html += '  <span style="font-size:9.5px; opacity:0.8; color:#94a3b8;">Type to filter all</span>';
+      html += '</div>';
+
+      filteredCmdItems.forEach(function(item, idx) {
+        const isSel = idx === cmdSelectedIndex ? ' selected' : '';
+        html += '<div class="nav-search-item' + isSel + '" data-idx="' + idx + '" onmouseenter="cmdSelectedIndex=' + idx + '" onclick="executeNavSearchItem(' + idx + ')">';
+        html += '  <div class="nav-search-item-left">';
+        html += '    <span class="item-icon">' + item.icon + '</span>';
+        html += '    <div class="nav-search-item-text">';
+        html += '      <strong>' + escapeHtml(item.title) + '</strong>';
+        html += '      <small>' + escapeHtml(item.keywords.split(' ').slice(0, 7).join(' ')) + '...</small>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '  <span class="nav-search-tag">' + item.cat + '</span>';
+        html += '</div>';
+      });
+
+      html += '<div class="nav-search-footer">';
+      html += 'Press <kbd>↑</kbd> <kbd>↓</kbd> to navigate · <kbd>Enter</kbd> to select · <kbd>Esc</kbd> to close';
+      html += '</div>';
+
+      dropdown.innerHTML = html;
+      dropdown.style.display = 'block';
+    }
+
+    function renderNavDropdownResults(dropdown, query) {
+      if (filteredCmdItems.length === 0) {
+        dropdown.innerHTML = '<div class="nav-search-empty">No matches found for "<strong>' + escapeHtml(query) + '</strong>"<br><span style="font-size:11px; color:#64748b; margin-top:6px; display:inline-block;">Try: SisGo, CV, FastAPI, Python, LoRA, Docker, or Contact</span></div>';
+        dropdown.style.display = 'block';
+        return;
+      }
+
+      let html = '<div class="nav-search-header">';
+      html += '  <span>MATCHING RESULTS (' + filteredCmdItems.length + ')</span>';
+      html += '  <span style="font-size:9.5px; opacity:0.8; color:#94a3b8;">Click item or Press Enter</span>';
+      html += '</div>';
+
+      filteredCmdItems.slice(0, 10).forEach(function(item, idx) {
+        const isSel = idx === cmdSelectedIndex ? ' selected' : '';
+        html += '<div class="nav-search-item' + isSel + '" data-idx="' + idx + '" onmouseenter="cmdSelectedIndex=' + idx + '" onclick="executeNavSearchItem(' + idx + ')">';
+        html += '  <div class="nav-search-item-left">';
+        html += '    <span class="item-icon">' + item.icon + '</span>';
+        html += '    <div class="nav-search-item-text">';
+        html += '      <strong>' + escapeHtml(item.title) + '</strong>';
+        html += '      <small>' + escapeHtml(item.keywords.split(' ').slice(0, 7).join(' ')) + '...</small>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '  <span class="nav-search-tag">' + item.cat + '</span>';
+        html += '</div>';
+      });
+
+      html += '<div class="nav-search-footer">';
+      html += 'Press <kbd>↑</kbd> <kbd>↓</kbd> to navigate · <kbd>Enter</kbd> to select · <kbd>Esc</kbd> to close';
+      html += '</div>';
+
+      dropdown.innerHTML = html;
+      dropdown.style.display = 'block';
+    }
+
+    function executeNavSearchItem(idx) {
       const item = filteredCmdItems[idx];
       if (item && item.action) {
-        closeCmdPalette();
+        closeNavSearchDropdown();
+        const input = document.getElementById('nav-search-input');
+        if (input) input.blur();
+        showToast('Navigating: ' + item.title.split(':')[0], item.icon || '🔍');
+        playTactileClick('click');
         item.action();
       }
     }
 
+    function closeNavSearchDropdown() {
+      const dropdown = document.getElementById('nav-search-dropdown');
+      if (dropdown) dropdown.style.display = 'none';
+    }
+
+    function clearNavSearch(e) {
+      if (e) e.stopPropagation();
+      const input = document.getElementById('nav-search-input');
+      const clearBtn = document.getElementById('nav-search-clear');
+      const dropdown = document.getElementById('nav-search-dropdown');
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+      if (clearBtn) clearBtn.style.display = 'none';
+      if (dropdown) renderNavQuickSuggestions(dropdown);
+    }
+
+    function handleNavSearchKeyDown(e) {
+      const dropdown = document.getElementById('nav-search-dropdown');
+      const input = document.getElementById('nav-search-input');
+      const isVisible = dropdown && dropdown.style.display !== 'none';
+      const q = input ? input.value.trim() : '';
+
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        submitNavSearch(e);
+        return;
+      }
+
+      if (!isVisible) {
+        if (e.key === 'ArrowDown') {
+          handleNavSearchFocus();
+        }
+        return;
+      }
+
+      const maxIdx = Math.min(filteredCmdItems.length, 10);
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (maxIdx > 0) {
+          cmdSelectedIndex = (cmdSelectedIndex + 1) % maxIdx;
+          if (q) {
+            renderNavDropdownResults(dropdown, q);
+          } else {
+            renderNavQuickSuggestions(dropdown, cmdSelectedIndex);
+          }
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (maxIdx > 0) {
+          cmdSelectedIndex = (cmdSelectedIndex - 1 + maxIdx) % maxIdx;
+          if (q) {
+            renderNavDropdownResults(dropdown, q);
+          } else {
+            renderNavQuickSuggestions(dropdown, cmdSelectedIndex);
+          }
+        }
+      } else if (e.key === 'Escape') {
+        closeNavSearchDropdown();
+      }
+    }
+
+    // Close dropdown on click outside
+    document.addEventListener('click', function(e) {
+      const wrap = document.getElementById('nav-search-wrap');
+      if (wrap && !wrap.contains(e.target)) {
+        closeNavSearchDropdown();
+      }
+    });
+
+    // Project card navigation helper
     function navigateToCard(cardId) {
+      const input = document.getElementById('nav-search-input');
+      if (input) input.blur();
+
+      document.querySelectorAll('#project-filters button').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      const allFilterBtn = document.querySelector('#project-filters button[data-filter="all"]');
+      if (allFilterBtn) allFilterBtn.classList.add('active');
+
+      document.querySelectorAll('.project-card').forEach(function(c) {
+        c.classList.remove('is-hidden');
+      });
+
       const card = document.getElementById(cardId);
       if (card) {
-        card.scrollIntoView({ behavior: 'smooth' });
-        card.style.transition = 'box-shadow 0.4s ease';
-        card.style.boxShadow = '0 0 45px rgba(56, 189, 248, 0.5)';
-        setTimeout(function() { card.style.boxShadow = ''; }, 1800);
+        const navHeight = 90;
+        const targetY = card.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: 'smooth'
+        });
+        try {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (e) {}
+
+        card.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
+        card.style.borderColor = 'var(--pri-light)';
+        card.style.boxShadow = '0 0 45px rgba(56, 189, 248, 0.6)';
+        playTactileClick('click');
+        setTimeout(function() {
+          card.style.boxShadow = '';
+          card.style.borderColor = '';
+        }, 2200);
       }
     }
 
     function scrollToSection(secId) {
+      const input = document.getElementById('nav-search-input');
+      if (input) input.blur();
+
       const sec = document.getElementById(secId);
       if (sec) {
-        sec.scrollIntoView({ behavior: 'smooth' });
+        const navHeight = 84;
+        const targetY = sec.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: 'smooth'
+        });
+        try {
+          sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (e) {}
+
+        playTactileClick('click');
+        const head = sec.querySelector('.section-head') || sec;
+        if (head) {
+          head.style.transition = 'transform 0.3s ease, filter 0.3s ease';
+          head.style.filter = 'drop-shadow(0 0 20px rgba(56, 189, 248, 0.6))';
+          setTimeout(function() {
+            head.style.filter = '';
+          }, 2000);
+        }
       }
     }
 
-    // Expose functions globally to window
+    // Global Keyboard Listeners
+    window.addEventListener('keydown', function(e) {
+      // Focus navbar search bar with Ctrl+K or Cmd+K
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        focusNavSearch();
+      }
+    });
+
+    // ==========================================================================
+    // EXPLICIT GLOBAL WINDOW BINDINGS
+    // Guarantees all inline HTML event handlers (onclick="...") execute reliably
+    // ==========================================================================
+    window.filterMapSubsystem = filterMapSubsystem;
+    window.inspectMapNode = inspectMapNode;
+    window.handleHudActionClick = handleHudActionClick;
+    window.handleMapNodeClick = handleMapNodeClick;
+    window.submitNavSearch = submitNavSearch;
+    window.focusNavSearch = focusNavSearch;
     window.openCmdPalette = openCmdPalette;
     window.closeCmdPalette = closeCmdPalette;
     window.closeCmdPaletteOnBackdrop = closeCmdPaletteOnBackdrop;
     window.filterCmdItems = filterCmdItems;
     window.executeCmdItem = executeCmdItem;
+    window.handleNavSearchInput = handleNavSearchInput;
+    window.handleNavSearchFocus = handleNavSearchFocus;
+    window.handleNavSearchKeyDown = handleNavSearchKeyDown;
+    window.clearNavSearch = clearNavSearch;
+    window.executeNavSearchItem = executeNavSearchItem;
+    window.closeNavSearchDropdown = closeNavSearchDropdown;
+    window.triggerDownloadCV = triggerDownloadCV;
+    window.navigateToCode = navigateToCode;
     window.navigateToCard = navigateToCard;
     window.scrollToSection = scrollToSection;
+    window.switchCodeSnippet = switchCodeSnippet;
+    window.renderCodeContainer = renderCodeContainer;
+    window.copyActiveCodeSnippet = copyActiveCodeSnippet;
+    window.switchCardTab = switchCardTab;
+    window.openCaseStudyModal = openCaseStudyModal;
+    window.closeModal = closeModal;
+    window.closeModalOnBackdrop = closeModalOnBackdrop;
+    window.openCVPreview = openCVPreview;
+    window.copyToClipboard = copyToClipboard;
+    window.applyProjectFilter = applyProjectFilter;
+    window.filterBySDG = filterBySDG;
+    window.selectPrivacyStage = selectPrivacyStage;
+    window.closeDrawer = closeDrawer;
+    window.applyTheme = applyTheme;
+    window.showToast = showToast;
+    window.playTactileClick = playTactileClick;
 
-    // Attach trigger listener
-    const cmdTriggerBtn = document.getElementById('cmd-k-trigger');
-    if (cmdTriggerBtn) {
-      cmdTriggerBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        openCmdPalette();
+    // DIRECT DOM EVENT LISTENERS FOR SEARCH AND IDE TABS
+    const navSearchInput = document.getElementById('nav-search-input');
+    if (navSearchInput) {
+      navSearchInput.addEventListener('input', function(e) {
+        handleNavSearchInput(e.target.value);
+      });
+      navSearchInput.addEventListener('focus', function() {
+        handleNavSearchFocus();
+      });
+      navSearchInput.addEventListener('keydown', function(e) {
+        handleNavSearchKeyDown(e);
       });
     }
 
-    // Global Keyboard Listeners for Command Palette
-    window.addEventListener('keydown', function(e) {
-      // Open with Ctrl+K or Cmd+K
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    // Bind direct click listeners to all IDE code tabs to ensure 100% fail-safe switching
+    document.querySelectorAll('.ide-tab').forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
         e.preventDefault();
-        const backdrop = document.getElementById('cmd-palette-backdrop');
-        if (backdrop && (backdrop.classList.contains('open') || backdrop.style.display === 'flex')) {
-          closeCmdPalette();
-        } else {
-          openCmdPalette();
+        const snippet = this.getAttribute('data-snippet');
+        if (snippet) {
+          switchCodeSnippet(snippet, this);
         }
-        return;
-      }
-
-      const backdrop = document.getElementById('cmd-palette-backdrop');
-      if (!backdrop || (!backdrop.classList.contains('open') && backdrop.style.display !== 'flex')) return;
-
-      if (e.key === 'Escape') {
-        closeCmdPalette();
-      } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (filteredCmdItems.length > 0) {
-          cmdSelectedIndex = (cmdSelectedIndex + 1) % filteredCmdItems.length;
-          renderCmdResults();
-        }
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (filteredCmdItems.length > 0) {
-          cmdSelectedIndex = (cmdSelectedIndex - 1 + filteredCmdItems.length) % filteredCmdItems.length;
-          renderCmdResults();
-        }
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        if (filteredCmdItems.length > 0) {
-          executeCmdItem(cmdSelectedIndex);
-        }
-      }
+      });
     });
-
-    const cmdInputEl = document.getElementById('cmd-palette-input');
-    if (cmdInputEl) {
-      cmdInputEl.addEventListener('input', function(e) {
-        filterCmdItems(e.target.value);
-      });
-    }
-
-    /* --------------------------------------------------------------------------
-       ENHANCEMENT 6: RECRUITER / EXECUTIVE FAST MODE TOGGLE
-       -------------------------------------------------------------------------- */
-    let isRecruiterMode = false;
-
-    function toggleRecruiterMode() {
-      playTactileClick('click');
-      isRecruiterMode = !isRecruiterMode;
-      document.body.classList.toggle('recruiter-mode-active', isRecruiterMode);
-
-      const banner = document.getElementById('recruiter-banner');
-      if (banner) {
-        banner.classList.toggle('visible', isRecruiterMode);
-      }
-
-      if (isRecruiterMode) {
-        showToast('⚡ 60-Second Recruiter Fast View Active! Key metrics & links highlighted.', '⚡');
-        playTactileClick('success');
-      } else {
-        showToast('Exited Recruiter Fast View.', 'ℹ️');
-      }
-    }
 
     // Initialize Code Showcase on load
     setTimeout(function() {

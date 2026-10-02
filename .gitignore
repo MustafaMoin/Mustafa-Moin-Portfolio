@@ -1,0 +1,6 @@
+# Scratch & temporary testing files
+scratch/
+*.backup
+test_*.png
+.DS_Store
+Thumbs.db
